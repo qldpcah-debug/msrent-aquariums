@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MSRent Aquariums · Acuarios que inspiran</title>
+<meta name="description" content="MSRent Aquariums: alquiler y mantenimiento de acuarios llave en mano para oficinas, clínicas, hoteles y hogares. Acuarios que inspiran." />
+<link rel="icon" href="assets/logo-msrent-aquariums.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   MSRent Aquariums — hoja de estilo única
+   Paleta: abismo, océano, laguna, espuma, coral (acento cálido)
+   ========================================================= */
+:root{
+  --abismo:#06243f;
+  --profundo:#0b3b63;
+  --oceano:#0f6fb5;
+  --laguna:#19a7c9;
+  --aqua:#45d2d8;
+  --alga:#3fb98a;
+  --coral:#ff8a5b;
+  --espuma:#eaf6fb;
+  --nieve:#ffffff;
+  --tinta:#0a2135;
+  --tinta-suave:#4a6880;
+  --borde:rgba(10,54,88,.12);
+  --sombra-s:0 2px 10px rgba(6,36,63,.07);
+  --sombra-m:0 14px 36px rgba(6,36,63,.12);
+  --sombra-l:0 30px 70px rgba(6,36,63,.20);
+  --r-s:12px; --r-m:20px; --r-l:30px; --r-xl:42px;
+  --ancho:1180px;
+  --trans:.45s cubic-bezier(.22,.9,.3,1);
+  --fuente:'Outfit',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --display:'Fraunces',Georgia,serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:94px}
+body{
+  margin:0;font-family:var(--fuente);color:var(--tinta);background:var(--nieve);
+  font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer;border:none;background:none}
+h1,h2,h3,h4{font-family:var(--display);font-weight:700;line-height:1.1;letter-spacing:-.02em;margin:0 0 .5em}
+h1{font-size:clamp(2.5rem,6vw,4.4rem)}
+h2{font-size:clamp(2rem,4vw,3rem)}
+h3{font-size:clamp(1.15rem,2vw,1.45rem)}
+p{margin:0 0 1rem}
+:focus-visible{outline:3px solid var(--laguna);outline-offset:3px;border-radius:6px}
+.contenedor{width:min(100% - 2.5rem,var(--ancho));margin-inline:auto}
+.salto-contenido{
+  position:absolute;left:1rem;top:-80px;z-index:999;background:var(--nieve);color:var(--profundo);
+  padding:.7rem 1.2rem;border-radius:0 0 var(--r-s) var(--r-s);font-weight:600;transition:top .25s;
+}
+.salto-contenido:focus{top:0}
+
+/* ---------- Encabezado ---------- */
+.cabecera{
+  position:fixed;inset:0 0 auto 0;z-index:100;padding:.85rem 0;
+  background:rgba(255,255,255,.72);backdrop-filter:blur(16px) saturate(150%);
+  border-bottom:1px solid transparent;transition:var(--trans);
+}
+.cabecera.fija{box-shadow:var(--sombra-s);border-bottom-color:var(--borde);padding:.5rem 0;background:rgba(255,255,255,.92)}
+.barra{display:flex;align-items:center;gap:1.2rem}
+.marca{display:flex;align-items:center;gap:.7rem;margin-right:auto}
+.marca img{width:52px;height:52px;object-fit:contain;transition:var(--trans)}
+.cabecera.fija .marca img{width:44px;height:44px}
+.marca-texto{display:flex;flex-direction:column;line-height:1.05}
+.marca-texto strong{font-family:var(--display);font-size:1.12rem;color:var(--profundo);letter-spacing:-.01em}
+.marca-texto span{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--laguna);font-weight:500}
+.nav{display:flex;align-items:center;gap:.25rem}
+.nav-enlace{
+  position:relative;padding:.6rem .95rem;border-radius:999px;font-weight:500;font-size:.95rem;
+  color:var(--tinta-suave);transition:var(--trans);
+}
+.nav-enlace:hover{color:var(--profundo);background:rgba(25,167,201,.1)}
+.nav-enlace.activo{color:var(--profundo);background:rgba(25,167,201,.16);font-weight:600}
+.acciones-cabecera{display:flex;align-items:center;gap:.6rem}
+
+/* ---------- Botones ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.55rem;
+  padding:.85rem 1.6rem;border-radius:999px;font-weight:600;font-size:.97rem;
+  transition:var(--trans);white-space:nowrap;position:relative;overflow:hidden;
+}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-primario{background:linear-gradient(135deg,var(--oceano),var(--laguna));color:#fff;box-shadow:0 10px 26px rgba(15,111,181,.32)}
+.btn-primario:hover{transform:translateY(-3px);box-shadow:0 18px 38px rgba(15,111,181,.42)}
+.btn-fantasma{border:1.6px solid rgba(11,59,99,.22);color:var(--profundo);background:rgba(255,255,255,.6)}
+.btn-fantasma:hover{border-color:var(--laguna);background:rgba(25,167,201,.1);transform:translateY(-3px)}
+.btn-claro{background:#fff;color:var(--profundo);box-shadow:var(--sombra-m)}
+.btn-claro:hover{transform:translateY(-3px)}
+.btn-coral{background:linear-gradient(135deg,var(--coral),#ffb27a);color:#5a2a12;box-shadow:0 10px 26px rgba(255,138,91,.35)}
+.btn-coral:hover{transform:translateY(-3px)}
+.btn-peq{padding:.6rem 1.15rem;font-size:.88rem}
+.btn:active{transform:translateY(-1px) scale(.99)}
+
+/* Menú móvil */
+.btn-menu{display:none;width:46px;height:46px;border-radius:14px;border:1px solid var(--borde);background:#fff;align-items:center;justify-content:center}
+.btn-menu span{display:block;width:20px;height:2px;background:var(--profundo);border-radius:2px;position:relative;transition:var(--trans)}
+.btn-menu span::before,.btn-menu span::after{content:'';position:absolute;left:0;width:20px;height:2px;background:var(--profundo);border-radius:2px;transition:var(--trans)}
+.btn-menu span::before{top:-6px}.btn-menu span::after{top:6px}
+.btn-menu[aria-expanded="true"] span{background:transparent}
+.btn-menu[aria-expanded="true"] span::before{top:0;transform:rotate(45deg)}
+.btn-menu[aria-expanded="true"] span::after{top:0;transform:rotate(-45deg)}
+
+/* ---------- Etiquetas y títulos ---------- */
+.etiqueta{
+  display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;border-radius:999px;
+  background:rgba(25,167,201,.13);color:var(--profundo);font-size:.78rem;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;margin-bottom:1.1rem;
+}
+.etiqueta::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--aqua);box-shadow:0 0 0 4px rgba(69,210,216,.25);animation:latido 2.6s infinite}
+@keyframes latido{0%,100%{box-shadow:0 0 0 4px rgba(69,210,216,.25)}50%{box-shadow:0 0 0 9px rgba(69,210,216,0)}}
+.encabezado-seccion{max-width:680px;margin:0 auto 3.2rem;text-align:center}
+.encabezado-seccion p{color:var(--tinta-suave);font-size:1.07rem}
+.texto-agua{background:linear-gradient(110deg,var(--oceano),var(--aqua) 45%,var(--alga));-webkit-background-clip:text;background-clip:text;color:transparent}
+section{padding:clamp(4rem,8vw,6.5rem) 0;position:relative}
+
+/* ---------- Páginas ---------- */
+.pagina{display:none;animation:entrarPagina .6s cubic-bezier(.22,.9,.3,1) both}
+.pagina.activa{display:block}
+@keyframes entrarPagina{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+main{padding-top:86px}
+
+/* ---------- Héroe ---------- */
+.heroe{
+  position:relative;overflow:hidden;padding:clamp(3rem,7vw,5.5rem) 0 clamp(5rem,9vw,7rem);
+  background:
+    radial-gradient(1100px 620px at 78% 8%,rgba(69,210,216,.28),transparent 62%),
+    radial-gradient(900px 560px at 8% 92%,rgba(63,185,138,.22),transparent 60%),
+    linear-gradient(170deg,#f3fbfe 0%,#e2f2fa 55%,#d6ecf7 100%);
+}
+.heroe-rejilla{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+.heroe-texto h1 span{display:block}
+.heroe-texto>p{font-size:1.14rem;color:#3c5d76;max-width:52ch}
+.heroe-botones{display:flex;flex-wrap:wrap;gap:.9rem;margin:2rem 0 2.4rem}
+.heroe-datos{display:flex;flex-wrap:wrap;gap:2.4rem;padding-top:1.6rem;border-top:1px dashed rgba(11,59,99,.2)}
+.dato strong{display:block;font-family:var(--display);font-size:1.95rem;color:var(--profundo);line-height:1}
+.dato span{font-size:.85rem;color:var(--tinta-suave)}
+
+/* ---------- Acuario CSS/SVG original ---------- */
+.escena-acuario{position:relative;display:flex;justify-content:center;perspective:1200px}
+.acuario{
+  position:relative;width:100%;max-width:470px;aspect-ratio:1/1.08;
+  border-radius:38px;overflow:hidden;
+  background:linear-gradient(180deg,#0a4f86 0%,#0b6ca8 38%,#0d3e6b 100%);
+  box-shadow:var(--sombra-l),inset 0 0 70px rgba(5,25,45,.55);
+  border:7px solid rgba(255,255,255,.75);
+  animation:flotarAcuario 9s ease-in-out infinite;
+}
+@keyframes flotarAcuario{0%,100%{transform:translateY(0) rotateX(0) rotateY(0)}50%{transform:translateY(-14px) rotateX(1.5deg) rotateY(-1.5deg)}}
+.acuario::after{ /* reflejo de cristal */
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(118deg,rgba(255,255,255,.35) 0 14%,transparent 30% 72%,rgba(255,255,255,.14) 86% 100%);
+}
+.luz-agua{
+  position:absolute;inset:-25% -10% auto -10%;height:85%;
+  background:repeating-linear-gradient(104deg,rgba(255,255,255,.17) 0 10px,transparent 10px 54px);
+  filter:blur(5px);animation:rayos 11s ease-in-out infinite alternate;
+}
+@keyframes rayos{from{transform:translateX(-7%) skewX(-4deg)}to{transform:translateX(7%) skewX(5deg)}}
+.arena{
+  position:absolute;left:-4%;right:-4%;bottom:-18px;height:100px;border-radius:50% 50% 0 0/80px 80px 0 0;
+  background:linear-gradient(180deg,#f0dcb4,#d9bd8a);box-shadow:0 -10px 26px rgba(0,0,0,.25)
+}
+.roca{position:absolute;bottom:34px;border-radius:50% 50% 36% 40%/60% 58% 40% 42%;background:linear-gradient(160deg,#2c4a5e,#16303f)}
+.roca.a{left:12%;width:92px;height:52px}
+.roca.b{right:16%;width:64px;height:38px;bottom:42px}
+.alga{position:absolute;bottom:40px;width:16px;transform-origin:bottom center;animation:ondear 5s ease-in-out infinite}
+.alga i{display:block;height:var(--h,80px);width:100%;border-radius:50% 50% 40% 40%/70% 70% 30% 30%;
+  background:linear-gradient(180deg,var(--alga),#1f7f63);transform-origin:bottom center;animation:ondear 6s ease-in-out infinite}
+@keyframes ondear{0%,100%{transform:rotate(-7deg) scaleY(1)}50%{transform:rotate(8deg) scaleY(1.06)}}
+.alga.a1{left:16%}.alga.a2{left:25%;animation-delay:-1.4s}.alga.a3{right:22%;animation-delay:-2.6s}.alga.a4{right:31%;animation-delay:-3.7s}
+.burbuja{
+  position:absolute;bottom:-30px;border-radius:50%;
+  background:radial-gradient(circle at 32% 30%,rgba(255,255,255,.95),rgba(255,255,255,.28) 55%,rgba(255,255,255,.06));
+  box-shadow:inset 0 0 6px rgba(255,255,255,.6);animation:subir linear infinite;
+}
+@keyframes subir{
+  0%{transform:translate(0,0) scale(.6);opacity:0}
+  12%{opacity:.95}
+  100%{transform:translate(var(--dx,14px),-540px) scale(1.15);opacity:0}
+}
+.pez{position:absolute;animation:nadar linear infinite;will-change:transform}
+.pez svg{width:100%;height:auto;filter:drop-shadow(0 6px 12px rgba(0,0,0,.3))}
+@keyframes nadar{
+  0%{transform:translateX(-30%) translateY(0) scaleX(1)}
+  48%{transform:translateX(430%) translateY(-18px) scaleX(1)}
+  50%{transform:translateX(430%) translateY(-18px) scaleX(-1)}
+  98%{transform:translateX(-30%) translateY(12px) scaleX(-1)}
+  100%{transform:translateX(-30%) translateY(0) scaleX(1)}
+}
+.cola{transform-origin:left center;animation:aletear 1.1s ease-in-out infinite}
+@keyframes aletear{0%,100%{transform:rotate(-11deg)}50%{transform:rotate(11deg)}}
+.tarjeta-flotante{
+  position:absolute;background:rgba(255,255,255,.93);backdrop-filter:blur(10px);
+  border-radius:18px;padding:.8rem 1.05rem;box-shadow:var(--sombra-m);display:flex;gap:.65rem;align-items:center;
+  animation:flotarTarjeta 6s ease-in-out infinite;
+}
+@keyframes flotarTarjeta{0%,100%{transform:translateY(0)}50%{transform:translateY(-11px)}}
+.tarjeta-flotante.ph{left:-14px;bottom:16%;animation-delay:-2s}
+.tarjeta-flotante.temp{right:-12px;top:12%}
+.tarjeta-flotante .ico{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;background:rgba(25,167,201,.16);color:var(--oceano);font-size:1rem}
+.tarjeta-flotante b{display:block;font-size:.95rem;color:var(--profundo);line-height:1.1}
+.tarjeta-flotante small{color:var(--tinta-suave);font-size:.74rem}
+
+/* Onda divisoria */
+.onda{display:block;width:100%;height:auto;margin-bottom:-6px}
+
+/* ---------- Ventajas ---------- */
+.rejilla-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.6rem}
+.tarjeta{
+  position:relative;background:#fff;border:1px solid var(--borde);border-radius:var(--r-l);
+  padding:2.1rem 1.8rem;box-shadow:var(--sombra-s);transition:var(--trans);overflow:hidden;
+}
+.tarjeta::before{content:'';position:absolute;inset:auto auto 0 0;width:100%;height:4px;background:linear-gradient(90deg,var(--oceano),var(--aqua),var(--alga));transform:scaleX(0);transform-origin:left;transition:var(--trans)}
+.tarjeta:hover{transform:translateY(-8px);box-shadow:var(--sombra-m);border-color:rgba(25,167,201,.4)}
+.tarjeta:hover::before{transform:scaleX(1)}
+.icono{
+  width:62px;height:62px;border-radius:19px;display:grid;place-items:center;margin-bottom:1.2rem;
+  background:linear-gradient(140deg,rgba(15,111,181,.14),rgba(69,210,216,.2));color:var(--oceano);
+  transition:var(--trans);
+}
+.tarjeta:hover .icono{transform:rotate(-7deg) scale(1.08);background:linear-gradient(140deg,var(--oceano),var(--laguna));color:#fff}
+.icono svg{width:30px;height:30px}
+.tarjeta p{color:var(--tinta-suave);margin-bottom:0}
+.tarjeta .mini-lista{list-style:none;padding:0;margin:1rem 0 0;font-size:.92rem;color:var(--tinta-suave)}
+.tarjeta .mini-lista li{padding-left:1.4rem;position:relative;margin-bottom:.3rem}
+.tarjeta .mini-lista li::before{content:'';position:absolute;left:0;top:.6em;width:8px;height:8px;border-radius:50%;background:var(--aqua)}
+
+/* ---------- Cómo funciona ---------- */
+.seccion-proceso{background:linear-gradient(180deg,#f6fbfe,#eaf5fb)}
+.pasos{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.4rem;position:relative}
+.paso{
+  background:#fff;border-radius:var(--r-m);padding:1.9rem 1.5rem;border:1px solid var(--borde);
+  box-shadow:var(--sombra-s);position:relative;transition:var(--trans);cursor:pointer;text-align:left;width:100%;
+}
+.paso:hover,.paso[aria-expanded="true"]{transform:translateY(-6px);box-shadow:var(--sombra-m);border-color:rgba(25,167,201,.45)}
+.paso .num{
+  width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-weight:700;
+  font-family:var(--display);font-size:1.2rem;color:#fff;margin-bottom:1rem;
+  background:linear-gradient(140deg,var(--profundo),var(--laguna));box-shadow:0 8px 20px rgba(15,111,181,.3);
+}
+.paso h3{margin-bottom:.4rem;font-size:1.18rem}
+.paso p{color:var(--tinta-suave);font-size:.95rem;margin:0}
+.paso-detalle{max-height:0;overflow:hidden;transition:max-height .5s ease,margin .4s ease,opacity .4s ease;opacity:0}
+.paso[aria-expanded="true"] .paso-detalle{max-height:260px;opacity:1;margin-top:.9rem}
+.paso-detalle p{font-size:.9rem;border-left:3px solid var(--aqua);padding-left:.85rem}
+.paso .mas{position:absolute;top:1.5rem;right:1.5rem;width:28px;height:28px;border-radius:50%;background:rgba(25,167,201,.14);color:var(--oceano);display:grid;place-items:center;font-size:1.1rem;transition:var(--trans)}
+.paso[aria-expanded="true"] .mas{transform:rotate(45deg);background:var(--oceano);color:#fff}
+
+/* ---------- FAQ ---------- */
+.faq{max-width:820px;margin-inline:auto;display:grid;gap:.9rem}
+.faq-item{border:1px solid var(--borde);border-radius:var(--r-m);background:#fff;overflow:hidden;transition:var(--trans)}
+.faq-item:hover{border-color:rgba(25,167,201,.45)}
+.faq-item.abierta{box-shadow:var(--sombra-m);border-color:rgba(25,167,201,.6)}
+.faq-boton{width:100%;display:flex;align-items:center;gap:1rem;text-align:left;padding:1.25rem 1.5rem;font-weight:600;color:var(--profundo);font-size:1.03rem}
+.faq-boton .flecha{margin-left:auto;width:30px;height:30px;border-radius:50%;background:rgba(25,167,201,.13);display:grid;place-items:center;flex:none;transition:var(--trans)}
+.faq-boton .flecha svg{width:15px;height:15px;color:var(--oceano);transition:var(--trans)}
+.faq-item.abierta .flecha{background:var(--oceano)}
+.faq-item.abierta .flecha svg{color:#fff;transform:rotate(180deg)}
+.faq-respuesta{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.3,.9,.3,1)}
+.faq-respuesta p{padding:0 1.5rem 1.35rem;margin:0;color:var(--tinta-suave)}
+
+/* ---------- Llamada final ---------- */
+.cta{
+  position:relative;overflow:hidden;border-radius:var(--r-xl);padding:clamp(2.6rem,5vw,4.2rem);
+  background:linear-gradient(135deg,var(--abismo),var(--profundo) 55%,var(--oceano));color:#fff;text-align:center;
+  box-shadow:var(--sombra-l);
+}
+.cta::before,.cta::after{content:'';position:absolute;border-radius:50%;filter:blur(2px);opacity:.3}
+.cta::before{width:300px;height:300px;background:radial-gradient(circle,var(--aqua),transparent 70%);top:-120px;right:-80px}
+.cta::after{width:260px;height:260px;background:radial-gradient(circle,var(--alga),transparent 70%);bottom:-130px;left:-60px}
+.cta h2,.cta p{position:relative;color:#fff}
+.cta p{color:rgba(255,255,255,.82);max-width:56ch;margin-inline:auto}
+.cta .heroe-botones{justify-content:center;margin-bottom:0}
+
+/* ---------- Pie ---------- */
+.pie{background:var(--abismo);color:rgba(255,255,255,.75);padding:4rem 0 2rem;margin-top:0}
+.pie-rejilla{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:2.2rem}
+.pie h4{color:#fff;font-family:var(--fuente);font-weight:600;font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:1rem}
+.pie ul{list-style:none;padding:0;margin:0;display:grid;gap:.5rem;font-size:.95rem}
+.pie a:hover{color:var(--aqua)}
+.pie .marca-texto strong{color:#fff}
+.pie-marca img{width:64px;background:#fff;border-radius:16px;padding:6px;margin-bottom:1rem}
+.pie-legal{margin-top:2.6rem;padding-top:1.4rem;border-top:1px solid rgba(255,255,255,.12);display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;font-size:.85rem}
+.redes{display:flex;gap:.6rem}
+.redes a{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.08);transition:var(--trans)}
+.redes a:hover{background:var(--laguna);color:#fff;transform:translateY(-3px)}
+.redes svg{width:18px;height:18px}
+
+/* ---------- Revelado al hacer scroll ---------- */
+.revelar{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,.9,.3,1)}
+.revelar.visible{opacity:1;transform:none}
+
+/* ---------- Quiénes somos ---------- */
+.cabecera-pagina{
+  padding:clamp(3rem,6vw,4.6rem) 0 clamp(2.5rem,5vw,3.6rem);text-align:center;
+  background:radial-gradient(900px 420px at 50% -10%,rgba(69,210,216,.3),transparent 65%),linear-gradient(180deg,#f2fafd,#ffffff);
+}
+.cabecera-pagina p{max-width:62ch;margin-inline:auto;color:var(--tinta-suave);font-size:1.08rem}
+.dos-columnas{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,3.6rem);align-items:center}
+.marco-foto{
+  border-radius:var(--r-xl);padding:1.6rem;background:linear-gradient(145deg,rgba(15,111,181,.12),rgba(63,185,138,.14));
+  border:1px solid var(--borde);box-shadow:var(--sombra-m);
+}
+.marco-foto img{border-radius:var(--r-l);background:#fff;padding:1.4rem}
+.valores{display:grid;gap:1rem;margin-top:1.6rem}
+.valor{display:flex;gap:1rem;padding:1.1rem 1.2rem;border-radius:var(--r-m);background:#fff;border:1px solid var(--borde);transition:var(--trans)}
+.valor:hover{transform:translateX(6px);border-color:rgba(25,167,201,.45);box-shadow:var(--sombra-s)}
+.valor .icono{width:46px;height:46px;border-radius:14px;margin:0;flex:none}
+.valor .icono svg{width:22px;height:22px}
+.valor h4{margin:0 0 .15rem;font-family:var(--fuente);font-weight:600;font-size:1.02rem;color:var(--profundo)}
+.valor p{margin:0;font-size:.92rem;color:var(--tinta-suave)}
+.linea-tiempo{position:relative;max-width:760px;margin-inline:auto;padding-left:2.4rem}
+.linea-tiempo::before{content:'';position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:linear-gradient(180deg,var(--aqua),var(--alga))}
+.hito{position:relative;padding-bottom:2rem}
+.hito::before{content:'';position:absolute;left:-2.4rem;top:.45rem;width:20px;height:20px;border-radius:50%;background:#fff;border:3px solid var(--laguna);box-shadow:0 0 0 5px rgba(25,167,201,.15)}
+.hito span{font-weight:700;color:var(--laguna);font-size:.9rem;letter-spacing:.08em}
+.hito h4{margin:.1rem 0 .3rem;font-family:var(--fuente);font-size:1.1rem;color:var(--profundo)}
+.hito p{margin:0;color:var(--tinta-suave);font-size:.95rem}
+.equipo{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem}
+.persona{text-align:center;padding:2rem 1.2rem;border-radius:var(--r-l);background:#fff;border:1px solid var(--borde);transition:var(--trans)}
+.persona:hover{transform:translateY(-7px);box-shadow:var(--sombra-m)}
+.avatar{width:92px;height:92px;border-radius:50%;margin:0 auto 1rem;display:grid;place-items:center;font-family:var(--display);font-size:1.7rem;color:#fff;background:linear-gradient(140deg,var(--profundo),var(--laguna))}
+.persona h4{margin:0 0 .2rem;font-family:var(--fuente);font-size:1.05rem;color:var(--profundo)}
+.persona small{color:var(--laguna);font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:.72rem}
+.persona p{margin:.7rem 0 0;font-size:.92rem;color:var(--tinta-suave)}
+
+/* ---------- Tienda ---------- */
+.filtros{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin-bottom:2.4rem}
+.filtro{padding:.6rem 1.25rem;border-radius:999px;border:1.5px solid var(--borde);font-weight:500;font-size:.92rem;color:var(--tinta-suave);transition:var(--trans);background:#fff}
+.filtro:hover{border-color:var(--laguna);color:var(--profundo)}
+.filtro.activo{background:linear-gradient(135deg,var(--oceano),var(--laguna));color:#fff;border-color:transparent;box-shadow:0 8px 20px rgba(15,111,181,.28)}
+.rejilla-productos{display:grid;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:1.6rem}
+.producto{display:flex;flex-direction:column;background:#fff;border:1px solid var(--borde);border-radius:var(--r-l);overflow:hidden;box-shadow:var(--sombra-s);transition:var(--trans);animation:entrarPagina .45s both}
+.producto:hover{transform:translateY(-8px);box-shadow:var(--sombra-m);border-color:rgba(25,167,201,.45)}
+.producto-visual{position:relative;height:190px;display:grid;place-items:center;overflow:hidden;background:linear-gradient(165deg,#0a4f86,#0d3e6b)}
+.producto-visual .luz-agua{inset:-30% -10% auto -10%;height:120%}
+.producto-visual svg{position:relative;z-index:2;width:62%;max-height:120px}
+.producto-cinta{position:absolute;z-index:3;top:.9rem;left:.9rem;background:var(--coral);color:#5a2a12;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .7rem;border-radius:999px}
+.producto-cuerpo{padding:1.4rem 1.4rem 1.6rem;display:flex;flex-direction:column;flex:1}
+.producto-cat{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--laguna);font-weight:600}
+.producto h3{font-size:1.15rem;margin:.35rem 0 .45rem}
+.producto p{font-size:.93rem;color:var(--tinta-suave);flex:1}
+.precio{display:flex;align-items:baseline;gap:.35rem;margin:.6rem 0 1rem}
+.precio strong{font-family:var(--display);font-size:1.6rem;color:var(--profundo)}
+.precio span{font-size:.85rem;color:var(--tinta-suave)}
+.producto-acciones{display:flex;gap:.6rem}
+.producto-acciones .btn{flex:1}
+.vacio{text-align:center;color:var(--tinta-suave);padding:3rem 0}
+
+/* Modal */
+.modal{position:fixed;inset:0;z-index:200;display:none;place-items:center;padding:1.2rem}
+.modal.abierto{display:grid}
+.modal-fondo{position:absolute;inset:0;background:rgba(6,36,63,.6);backdrop-filter:blur(6px);animation:entrarPagina .3s both}
+.modal-caja{
+  position:relative;background:#fff;border-radius:var(--r-xl);max-width:720px;width:100%;max-height:88vh;overflow:auto;
+  box-shadow:var(--sombra-l);animation:subirModal .4s cubic-bezier(.22,.9,.3,1) both;
+}
+@keyframes subirModal{from{opacity:0;transform:translateY(26px) scale(.97)}to{opacity:1;transform:none}}
+.modal-visual{height:210px;position:relative;overflow:hidden;background:linear-gradient(165deg,#0a4f86,#0d3e6b);display:grid;place-items:center}
+.modal-visual svg{position:relative;z-index:2;width:46%;max-height:150px}
+.modal-cerrar{position:absolute;z-index:4;top:1rem;right:1rem;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center;font-size:1.3rem;color:var(--profundo);box-shadow:var(--sombra-s);transition:var(--trans)}
+.modal-cerrar:hover{transform:rotate(90deg);background:#fff}
+.modal-cuerpo{padding:1.8rem 2rem 2rem}
+.modal-cuerpo h3{font-size:1.6rem;margin-bottom:.3rem}
+.ficha{list-style:none;padding:0;margin:1.2rem 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:.7rem}
+.ficha li{background:var(--espuma);border-radius:var(--r-s);padding:.75rem .95rem;font-size:.9rem}
+.ficha b{display:block;color:var(--profundo);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
+
+/* ---------- Contacto ---------- */
+.contacto-rejilla{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,4vw,3.2rem);align-items:start}
+.formulario{background:#fff;border:1px solid var(--borde);border-radius:var(--r-xl);padding:clamp(1.6rem,3vw,2.4rem);box-shadow:var(--sombra-m)}
+.campo{margin-bottom:1.15rem}
+.campo label{display:block;font-weight:600;font-size:.9rem;color:var(--profundo);margin-bottom:.4rem}
+.campo input,.campo select,.campo textarea{
+  width:100%;padding:.85rem 1rem;border-radius:var(--r-s);border:1.5px solid var(--borde);
+  font:inherit;font-size:.96rem;background:#fbfdfe;transition:var(--trans);color:var(--tinta);
+}
+.campo input:focus,.campo select:focus,.campo textarea:focus{outline:none;border-color:var(--laguna);background:#fff;box-shadow:0 0 0 4px rgba(25,167,201,.14)}
+.campo textarea{resize:vertical;min-height:120px}
+.campo .error{color:#d6453f;font-size:.82rem;margin-top:.3rem;display:none}
+.campo.invalido input,.campo.invalido select,.campo.invalido textarea{border-color:#e4756f;background:#fff6f5}
+.campo.invalido .error{display:block}
+.fila{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.casilla{display:flex;gap:.7rem;align-items:flex-start;font-size:.88rem;color:var(--tinta-suave)}
+.casilla input{width:auto;margin-top:.25rem}
+.aviso-exito{
+  display:none;align-items:center;gap:.9rem;margin-top:1.2rem;padding:1rem 1.2rem;border-radius:var(--r-m);
+  background:rgba(63,185,138,.13);border:1px solid rgba(63,185,138,.4);color:#1d6b50;font-weight:500;font-size:.95rem;
+}
+.aviso-exito.visible{display:flex;animation:entrarPagina .4s both}
+.panel-contacto{display:grid;gap:1rem}
+.contacto-item{display:flex;gap:1rem;padding:1.3rem;border-radius:var(--r-m);background:#fff;border:1px solid var(--borde);transition:var(--trans)}
+.contacto-item:hover{transform:translateY(-4px);box-shadow:var(--sombra-s);border-color:rgba(25,167,201,.45)}
+.contacto-item .icono{width:48px;height:48px;border-radius:14px;margin:0;flex:none}
+.contacto-item .icono svg{width:22px;height:22px}
+.contacto-item h4{margin:0 0 .2rem;font-family:var(--fuente);font-size:1rem;color:var(--profundo)}
+.contacto-item p,.contacto-item a{margin:0;font-size:.93rem;color:var(--tinta-suave)}
+.contacto-item a:hover{color:var(--oceano)}
+.mapa{border-radius:var(--r-m);overflow:hidden;border:1px solid var(--borde);height:270px;position:relative;background:linear-gradient(160deg,#dbeef8,#c3e3f3)}
+.mapa .pin{position:absolute;left:50%;top:46%;transform:translate(-50%,-100%);color:var(--oceano);animation:flotarTarjeta 3.4s ease-in-out infinite}
+.mapa .pin svg{width:38px;height:38px;filter:drop-shadow(0 6px 10px rgba(6,36,63,.3))}
+.mapa .retic{position:absolute;inset:0;background:
+  repeating-linear-gradient(0deg,rgba(255,255,255,.55) 0 1px,transparent 1px 34px),
+  repeating-linear-gradient(90deg,rgba(255,255,255,.55) 0 1px,transparent 1px 34px)}
+.mapa-aviso{position:absolute;left:1rem;right:1rem;bottom:1rem;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-radius:var(--r-s);padding:.9rem 1.1rem;box-shadow:var(--sombra-s);display:grid;gap:.1rem}
+.mapa-aviso b{color:var(--profundo);font-size:.98rem}
+.mapa-aviso span{font-size:.84rem;color:var(--tinta-suave)}
+.mapa-aviso .btn{margin-top:.6rem;justify-self:start}
+.mapa .rio{position:absolute;left:-10%;right:-10%;top:58%;height:46px;background:linear-gradient(90deg,var(--laguna),var(--aqua));opacity:.5;transform:rotate(-7deg);filter:blur(1px)}
+
+/* ---------- Adaptativo ---------- */
+@media (max-width:980px){
+  .heroe-rejilla,.dos-columnas,.contacto-rejilla{grid-template-columns:1fr}
+  .escena-acuario{order:-1}
+  .pie-rejilla{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+  body{font-size:16px}
+  .btn-menu{display:flex}
+  .nav{
+    position:fixed;inset:74px .8rem auto .8rem;flex-direction:column;align-items:stretch;gap:.2rem;
+    background:#fff;border-radius:var(--r-m);padding:.7rem;box-shadow:var(--sombra-l);border:1px solid var(--borde);
+    opacity:0;visibility:hidden;transform:translateY(-12px);transition:var(--trans);
+  }
+  .nav.abierto{opacity:1;visibility:visible;transform:none}
+  .nav-enlace{padding:.85rem 1rem;font-size:1rem}
+  .acciones-cabecera .btn{display:none}
+  .heroe-datos{gap:1.4rem}
+  .dato strong{font-size:1.6rem}
+  .tarjeta-flotante.ph{left:-6px}
+  .tarjeta-flotante.temp{right:-6px}
+  .fila{grid-template-columns:1fr}
+  .pie-rejilla{grid-template-columns:1fr}
+  .linea-tiempo{padding-left:2rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+  .revelar{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<a class="salto-contenido" href="#contenido">Saltar al contenido</a>
+
+<!-- ======================= CABECERA ======================= -->
+<header class="cabecera" id="cabecera">
+  <div class="contenedor barra">
+    <a href="#inicio" class="marca" data-ir="inicio">
+      <img src="assets/logo-msrent-aquariums.png" alt="Logotipo de MSRent Aquariums" />
+      <span class="marca-texto">
+        <strong>MSRent Aquariums</strong>
+        <span>Acuarios que inspiran</span>
+      </span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Navegación principal">
+      <a href="#inicio" class="nav-enlace activo" data-ir="inicio">Inicio</a>
+      <a href="#nosotros" class="nav-enlace" data-ir="nosotros">Quiénes somos</a>
+      <a href="#tienda" class="nav-enlace" data-ir="tienda">Tienda</a>
+      <a href="#contacto" class="nav-enlace" data-ir="contacto">Contacto</a>
+    </nav>
+
+    <div class="acciones-cabecera">
+      <a href="#contacto" class="btn btn-primario btn-peq" data-ir="contacto">
+        Pide tu propuesta
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <button class="btn-menu" id="btnMenu" aria-expanded="false" aria-controls="nav" aria-label="Abrir menú"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="contenido">
+
+<!-- ======================= PÁGINA: INICIO ======================= -->
+<div class="pagina activa" id="pagina-inicio">
+
+  <section class="heroe">
+    <div class="contenedor heroe-rejilla">
+      <div class="heroe-texto">
+        <span class="etiqueta">Alquiler · Diseño · Mantenimiento</span>
+        <h1>Un océano vivo <span class="texto-agua">en tu espacio</span></h1>
+        <p>Diseñamos, instalamos y cuidamos acuarios por suscripción. Tú disfrutas del agua en movimiento; nosotros nos ocupamos de absolutamente todo lo demás.</p>
+        <div class="heroe-botones">
+          <button class="btn btn-primario" data-ir="tienda">
+            Ver acuarios
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+          <button class="btn btn-fantasma" data-scroll="#como-funciona">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 9l5 3-5 3z"/></svg>
+            Cómo funciona
+          </button>
+        </div>
+        <div class="heroe-datos">
+          <div class="dato"><strong data-contador="180" data-sufijo="+">0</strong><span>Acuarios instalados</span></div>
+          <div class="dato"><strong data-contador="12" data-sufijo=" años">0</strong><span>Cuidando vida acuática</span></div>
+          <div class="dato"><strong data-contador="98" data-sufijo="%">0</strong><span>Clientes que renuevan</span></div>
+        </div>
+      </div>
+
+      <!-- Objeto visual original: acuario en CSS + SVG -->
+      <div class="escena-acuario">
+        <div class="acuario" id="acuario" aria-hidden="true">
+          <div class="luz-agua"></div>
+
+          <div class="pez" style="width:96px;top:24%;left:4%;animation-duration:19s">
+            <svg viewBox="0 0 120 70">
+              <defs>
+                <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#5ee0e6"/><stop offset="1" stop-color="#1668b5"/>
+                </linearGradient>
+              </defs>
+              <g class="cola"><path d="M8 35 L0 12 Q22 30 26 35 Q22 40 0 58 Z" fill="#1668b5" opacity=".9"/></g>
+              <path d="M24 35 Q52 2 92 20 Q118 32 92 48 Q52 66 24 35 Z" fill="url(#g1)"/>
+              <path d="M62 14 Q70 2 80 16 Z" fill="#3fb98a" opacity=".85"/>
+              <circle cx="96" cy="31" r="5" fill="#fff"/><circle cx="97" cy="31" r="2.4" fill="#06243f"/>
+            </svg>
+          </div>
+
+          <div class="pez" style="width:62px;top:52%;left:0%;animation-duration:26s;animation-delay:-6s">
+            <svg viewBox="0 0 120 70">
+              <defs>
+                <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#ffd48a"/><stop offset="1" stop-color="#ff8a5b"/>
+                </linearGradient>
+              </defs>
+              <g class="cola" style="animation-duration:.85s"><path d="M10 35 L0 16 Q24 31 28 35 Q24 39 0 54 Z" fill="#ff8a5b" opacity=".9"/></g>
+              <path d="M26 35 Q54 6 94 22 Q116 33 94 46 Q54 64 26 35 Z" fill="url(#g2)"/>
+              <circle cx="97" cy="31" r="4" fill="#fff"/><circle cx="98" cy="31" r="2" fill="#4a2410"/>
+            </svg>
+          </div>
+
+          <div class="pez" style="width:44px;top:70%;left:8%;animation-duration:32s;animation-delay:-14s">
+            <svg viewBox="0 0 120 70">
+              <g class="cola" style="animation-duration:1.3s"><path d="M10 35 L2 20 Q26 32 28 35 Q26 38 2 50 Z" fill="#3fb98a"/></g>
+              <path d="M26 35 Q56 10 92 24 Q112 34 92 44 Q56 60 26 35 Z" fill="#45d2d8"/>
+              <circle cx="95" cy="32" r="3.4" fill="#fff"/><circle cx="96" cy="32" r="1.7" fill="#06243f"/>
+            </svg>
+          </div>
+
+          <div class="alga a1"><i style="--h:110px"></i></div>
+          <div class="alga a2"><i style="--h:74px"></i></div>
+          <div class="alga a3"><i style="--h:96px"></i></div>
+          <div class="alga a4"><i style="--h:62px"></i></div>
+          <div class="roca a"></div>
+          <div class="roca b"></div>
+          <div class="arena"></div>
+        </div>
+
+        <div class="tarjeta-flotante temp">
+          <span class="ico">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 13.5V5a2 2 0 114 0v8.5a4.5 4.5 0 11-4 0z"/></svg>
+          </span>
+          <span><b>25,4 °C</b><small>Temperatura estable</small></span>
+        </div>
+        <div class="tarjeta-flotante ph">
+          <span class="ico">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.4 6 10.4A6 6 0 116 13.4C6 9.4 12 3 12 3z"/></svg>
+          </span>
+          <span><b>pH 7,2</b><small>Agua equilibrada</small></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <svg class="onda" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+    <path fill="#ffffff" d="M0,40 C240,95 420,0 720,34 C1020,68 1200,10 1440,46 L1440,90 L0,90 Z"/>
+  </svg>
+
+  <!-- Ventajas -->
+  <section id="ventajas">
+    <div class="contenedor">
+      <div class="encabezado-seccion revelar">
+        <span class="etiqueta">Por qué MSRent</span>
+        <h2>Tres razones para <span class="texto-agua">no tener que preocuparte</span></h2>
+        <p>Un acuario profesional exige constancia. Nosotros convertimos esa constancia en un servicio con cuota fija y sin sorpresas.</p>
+      </div>
+      <div class="rejilla-3">
+        <article class="tarjeta revelar">
+          <div class="icono">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.4 8.7-8 10-4.6-1.3-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <h3>Cero mantenimiento para ti</h3>
+          <p>Visitas técnicas programadas, control de parámetros, poda de plantas y salud de los peces. Tú solo miras.</p>
+          <ul class="mini-lista"><li>Visitas quincenales incluidas</li><li>Recambios y consumibles cubiertos</li><li>Urgencias en menos de 24 h</li></ul>
+        </article>
+        <article class="tarjeta revelar">
+          <div class="icono">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l5-4 4 3 4-3 5 4v10l-5 4-4-3-4 3-5-4z"/><path d="M8 3v14M16 6v14"/></svg>
+          </div>
+          <h3>Diseño a medida del espacio</h3>
+          <p>Medimos, proponemos y fabricamos el conjunto completo: mueble, iluminación y paisajismo acuático acorde a tu marca.</p>
+          <ul class="mini-lista"><li>Render previo sin compromiso</li><li>Medidas y acabados personalizados</li><li>Biotopos dulces o marinos</li></ul>
+        </article>
+        <article class="tarjeta revelar">
+          <div class="icono">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16"/><path d="M8 16V9M12 16v-5M16 16v-9M20 16v-3"/></svg>
+          </div>
+          <h3>Cuota fija, sin inversión</h3>
+          <p>Olvídate de comprar equipos. Una cuota mensual cubre equipo, fauna, flora, servicio y sustituciones.</p>
+          <ul class="mini-lista"><li>Desde 89 €/mes</li><li>Sin permanencia a partir del año 1</li><li>Ampliable o reversible</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cómo funciona -->
+  <section class="seccion-proceso" id="como-funciona">
+    <div class="contenedor">
+      <div class="encabezado-seccion revelar">
+        <span class="etiqueta">Cómo funciona</span>
+        <h2>De la idea al <span class="texto-agua">primer burbujeo</span> en 4 pasos</h2>
+        <p>Pulsa cada paso para ver el detalle de lo que hacemos en cada fase.</p>
+      </div>
+      <div class="pasos">
+        <button class="paso revelar" aria-expanded="false">
+          <span class="mas">+</span>
+          <span class="num">1</span>
+          <h3>Visita y diagnóstico</h3>
+          <p>Analizamos luz, espacio, tránsito y objetivos del proyecto.</p>
+          <div class="paso-detalle"><p>Acudimos a tu local o vivienda, tomamos medidas, comprobamos puntos de agua y electricidad y te proponemos dos o tres ubicaciones óptimas. Sin coste y sin compromiso.</p></div>
+        </button>
+        <button class="paso revelar" aria-expanded="false">
+          <span class="mas">+</span>
+          <span class="num">2</span>
+          <h3>Diseño y propuesta</h3>
+          <p>Recibes un render 3D, la selección de fauna y la cuota cerrada.</p>
+          <div class="paso-detalle"><p>Te entregamos el paisajismo propuesto, la lista de especies compatibles entre sí, el mueble con sus acabados y el presupuesto mensual todo incluido. Puedes pedir cambios tantas veces como quieras.</p></div>
+        </button>
+        <button class="paso revelar" aria-expanded="false">
+          <span class="mas">+</span>
+          <span class="num">3</span>
+          <h3>Instalación llave en mano</h3>
+          <p>Montamos, ciclamos el agua y repoblamos cuando es seguro.</p>
+          <div class="paso-detalle"><p>Instalamos en una sola jornada y dejamos el acuario en ciclado. Entre 10 y 21 días después introducimos la fauna de forma escalonada, cuando la biología del agua ya es estable.</p></div>
+        </button>
+        <button class="paso revelar" aria-expanded="false">
+          <span class="mas">+</span>
+          <span class="num">4</span>
+          <h3>Cuidado continuo</h3>
+          <p>Visitas periódicas, informe de parámetros y soporte directo.</p>
+          <div class="paso-detalle"><p>Cada visita incluye cambio parcial de agua, limpieza de cristales y filtros, poda, abonado y analítica. Te enviamos un informe y tienes un canal de WhatsApp para cualquier incidencia.</p></div>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="contenedor">
+      <div class="encabezado-seccion revelar">
+        <span class="etiqueta">Preguntas frecuentes</span>
+        <h2>Lo que todo el mundo <span class="texto-agua">nos pregunta</span></h2>
+        <p>Y si tu duda no está aquí, escríbenos: respondemos en menos de 24 horas laborables.</p>
+      </div>
+      <div class="faq revelar" id="faq-lista">
+        <div class="faq-item">
+          <button class="faq-boton" aria-expanded="false">¿Qué incluye exactamente la cuota mensual?
+            <span class="flecha"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </button>
+          <div class="faq-respuesta"><p>Acuario completo con mueble e iluminación, filtración, fauna y flora, instalación, visitas de mantenimiento, consumibles, analíticas y sustitución de cualquier equipo o ejemplar sin coste adicional.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-boton" aria-expanded="false">¿Cada cuánto vais a mantenerlo?
+            <span class="flecha"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </button>
+          <div class="faq-respuesta"><p>De forma estándar cada 15 días. En acuarios marinos o de gran volumen pasamos a visitas semanales, siempre dentro de la misma cuota. Además atendemos urgencias en menos de 24 horas.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-boton" aria-expanded="false">¿Hace ruido o consume mucha electricidad?
+            <span class="flecha"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </button>
+          <div class="faq-respuesta"><p>Trabajamos con bombas de corriente continua y LED de bajo consumo. Un acuario de 200 litros ronda los 6-9 € de luz al mes y su nivel sonoro es inferior al de un frigorífico.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-boton" aria-expanded="false">¿Puedo quedarme con el acuario o cambiarlo de tamaño?
+            <span class="flecha"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </button>
+          <div class="faq-respuesta"><p>Sí. A partir del duodécimo mes puedes ampliar a un modelo mayor, reducirlo o ejercer la opción de compra con el valor residual descontado de las cuotas ya pagadas.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-boton" aria-expanded="false">¿Trabajáis con empresas y centros sanitarios?
+            <span class="flecha"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </button>
+          <div class="faq-respuesta"><p>Es la mayor parte de nuestra cartera: clínicas, hoteles, oficinas, restaurantes y residencias. Emitimos factura con IVA, el alquiler es gasto deducible y aportamos toda la documentación de prevención necesaria.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="contenedor">
+      <div class="cta revelar">
+        <h2>¿Imaginas tu espacio con vida dentro?</h2>
+        <p>Cuéntanos dónde quieres el acuario y te enviamos una propuesta visual con la cuota cerrada en 72 horas.</p>
+        <div class="heroe-botones">
+          <button class="btn btn-claro" data-ir="contacto">Solicitar propuesta gratuita</button>
+          <button class="btn btn-coral" data-ir="tienda">Explorar la tienda</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<!-- ======================= PÁGINA: QUIÉNES SOMOS ======================= -->
+<div class="pagina" id="pagina-nosotros">
+  <section class="cabecera-pagina">
+    <div class="contenedor">
+      <span class="etiqueta">Quiénes somos</span>
+      <h1>Gente del agua, <span class="texto-agua">no comerciales</span></h1>
+      <p>Nacimos en un trastero lleno de urnas y filtros caseros. Hoy mantenemos cientos de litros de vida en oficinas, clínicas y hogares, con el mismo mimo del primer día.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:1rem">
+    <div class="contenedor dos-columnas">
+      <div class="marco-foto revelar">
+        <img src="assets/logo-msrent-aquariums.png" alt="Identidad visual de MSRent Aquariums" />
+      </div>
+      <div class="revelar">
+        <h2>Nuestra forma de <span class="texto-agua">entender el acuarismo</span></h2>
+        <p>Creemos que un acuario no es decoración: es un ecosistema que respira. Por eso no vendemos peces, cuidamos biología. Cada proyecto se diseña pensando primero en qué especies van a vivir bien allí y después en cómo se verá de bonito.</p>
+        <div class="valores">
+          <div class="valor">
+            <span class="icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.6-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.4-7 10-7 10z"/></svg></span>
+            <div><h4>Bienestar animal primero</h4><p>Densidades bajas, especies compatibles y origen de cría controlada.</p></div>
+          </div>
+          <div class="valor">
+            <span class="icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 8l7-5 7 5"/><circle cx="12" cy="15" r="4"/></svg></span>
+            <div><h4>Transparencia total</h4><p>Informe de cada visita con parámetros reales y acciones realizadas.</p></div>
+          </div>
+          <div class="valor">
+            <span class="icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1018 0 9 9 0 10-18 0z"/><path d="M3 12h18M12 3c3 3.6 3 14.4 0 18M12 3c-3 3.6-3 14.4 0 18"/></svg></span>
+            <div><h4>Impacto responsable</h4><p>Equipos de bajo consumo, agua reutilizada y plantas de cultivo propio.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion-proceso">
+    <div class="contenedor">
+      <div class="encabezado-seccion revelar">
+        <span class="etiqueta">Trayectoria</span>
+        <h2>Doce años <span class="texto-agua">mirando el agua</span></h2>
+      </div>
+      <div class="linea-tiempo revelar">
+        <div class="hito"><span>2014</span><h4>El primer acuario alquilado</h4><p>Una cafetería del barrio nos pidió un acuario que no tuviera que cuidar. Así nació el modelo de suscripción.</p></div>
+        <div class="hito"><span>2017</span><h4>Taller y sala de ciclado propios</h4><p>Montamos nuestro primer taller para preparar los acuarios antes de llegar al cliente.</p></div>
+        <div class="hito"><span>2021</span><h4>Entramos en el sector sanitario</h4><p>Clínicas y residencias incorporan nuestros acuarios como elemento de reducción de ansiedad en salas de espera.</p></div>
+        <div class="hito"><span>2026</span><h4>Más de 180 ecosistemas activos</h4><p>Y un equipo de siete personas que los visita cada quincena, uno a uno.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="contenedor">
+      <div class="encabezado-seccion revelar">
+        <span class="etiqueta">El equipo</span>
+        <h2>Quién cuida <span class="texto-agua">de tu acuario</span></h2>
+      </div>
+      <div class="equipo">
+        <article class="persona revelar"><div class="avatar">MS</div><h4>Marcos Serra</h4><small>Fundador · Acuapaisajista</small><p>Diseña cada layout y selecciona la fauna de todos los proyectos.</p></article>
+        <article class="persona revelar"><div class="avatar">LV</div><h4>Laura Vega</h4><small>Biología acuática</small><p>Supervisa parámetros, sanidad y protocolos de ciclado del agua.</p></article>
+        <article class="persona revelar"><div class="avatar">AR</div><h4>Adrián Ruiz</h4><small>Técnico de ruta</small><p>Realiza las visitas quincenales y las urgencias de la zona norte.</p></article>
+        <article class="persona revelar"><div class="avatar">NC</div><h4>Nuria Cano</h4><small>Atención al cliente</small><p>Tu contacto directo para altas, cambios e incidencias.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="contenedor">
+      <div class="cta revelar">
+        <h2>¿Hablamos de tu proyecto?</h2>
+        <p>Nos encanta un reto: un ventanal, un recibidor imposible o una pared que pide agua.</p>
+        <div class="heroe-botones"><button class="btn btn-claro" data-ir="contacto">Escríbenos</button></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ======================= PÁGINA: TIENDA ======================= -->
+<div class="pagina" id="pagina-tienda">
+  <section class="cabecera-pagina">
+    <div class="contenedor">
+      <span class="etiqueta">Tienda</span>
+      <h1>Elige tu <span class="texto-agua">ecosistema</span></h1>
+      <p>Planes de alquiler todo incluido y extras puntuales. Filtra por categoría y abre cualquier ficha para ver el detalle completo.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:1rem">
+    <div class="contenedor">
+      <div class="filtros" id="filtros">
+        <button class="filtro activo" data-filtro="todos">Todo</button>
+        <button class="filtro" data-filtro="dulce">Agua dulce</button>
+        <button class="filtro" data-filtro="marino">Marino</button>
+        <button class="filtro" data-filtro="diseno">Diseño especial</button>
+        <button class="filtro" data-filtro="servicio">Servicios</button>
+      </div>
+      <div class="rejilla-productos" id="rejillaProductos"></div>
+      <p class="vacio" id="vacio" hidden>No hay productos en esta categoría.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="contenedor">
+      <div class="cta revelar">
+        <h2>¿No encuentras tu medida?</h2>
+        <p>Fabricamos acuarios a medida desde 40 hasta 2.000 litros, con el mismo modelo de cuota mensual.</p>
+        <div class="heroe-botones"><button class="btn btn-claro" data-ir="contacto">Pedir presupuesto a medida</button></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ======================= PÁGINA: CONTACTO ======================= -->
+<div class="pagina" id="pagina-contacto">
+  <section class="cabecera-pagina">
+    <div class="contenedor">
+      <span class="etiqueta">Contacto</span>
+      <h1>Cuéntanos <span class="texto-agua">dónde va el agua</span></h1>
+      <p>Rellena el formulario y te respondemos con una propuesta visual y la cuota cerrada en un máximo de 72 horas.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:1rem">
+    <div class="contenedor contacto-rejilla">
+      <form class="formulario revelar" id="formContacto" novalidate>
+        <h3>Solicita tu propuesta</h3>
+        <p style="color:var(--tinta-suave);font-size:.95rem">Sin compromiso y sin coste. Solo necesitamos unos datos básicos.</p>
+        <div class="fila">
+          <div class="campo"><label for="nombre">Nombre y apellidos *</label><input id="nombre" name="nombre" type="text" placeholder="Marta Ferrer" required /><span class="error">Indícanos tu nombre.</span></div>
+          <div class="campo"><label for="email">Correo electrónico *</label><input id="email" name="email" type="email" placeholder="marta@empresa.com" required /><span class="error">Escribe un correo válido.</span></div>
+        </div>
+        <div class="fila">
+          <div class="campo"><label for="telefono">Teléfono</label><input id="telefono" name="telefono" type="tel" placeholder="600 000 000" /><span class="error">Revisa el teléfono.</span></div>
+          <div class="campo"><label for="tipo">Tipo de espacio *</label>
+            <select id="tipo" name="tipo" required>
+              <option value="">Selecciona una opción</option>
+              <option>Oficina o despacho</option>
+              <option>Clínica o centro sanitario</option>
+              <option>Hotel o restaurante</option>
+              <option>Vivienda particular</option>
+              <option>Otro</option>
+            </select><span class="error">Elige el tipo de espacio.</span>
+          </div>
+        </div>
+        <div class="campo"><label for="mensaje">¿Qué tienes en mente? *</label><textarea id="mensaje" name="mensaje" placeholder="Tengo un hueco de 160 cm en la sala de espera y me gustaría algo plantado…" required></textarea><span class="error">Cuéntanos algo más (mínimo 10 caracteres).</span></div>
+        <div class="campo"><label class="casilla"><input type="checkbox" id="privacidad" required /> <span>He leído y acepto la política de privacidad y el tratamiento de mis datos para recibir una propuesta comercial. *</span></label><span class="error">Debes aceptar la política de privacidad.</span></div>
+        <button type="submit" class="btn btn-primario" style="width:100%">
+          Enviar solicitud
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg>
+        </button>
+        <div class="aviso-exito" id="avisoExito" role="status">
+          <span class="ico">✅</span>
+          <span><b>¡Solicitud enviada!</b><br>Gracias <span id="nombreExito"></span>, te escribiremos en menos de 72 horas.</span>
+        </div>
+      </form>
+
+      <div class="panel-contacto revelar">
+        <div class="contacto-item">
+          <span class="icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.2a2 2 0 012.1-.5c.9.3 1.8.6 2.8.7a2 2 0 011.7 2z"/></svg></span>
+          <div><h4>Teléfono y WhatsApp</h4><a href="tel:+34652088553">652 088 553</a><br><a href="https://wa.me/34652088553" target="_blank" rel="noopener" style="color:var(--oceano);font-weight:600">Escríbenos por WhatsApp</a></div>
+        </div>
+        <div class="contacto-item">
+          <span class="icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M3 7l9 6 9-6"/></svg></span>
+          <div><h4>Correo</h4><a href="mailto:msrent.aquariums@gmail.com">msrent.aquariums@gmail.com</a></div>
+        </div>
+        <div class="contacto-item">
+          <span class="icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></span>
+          <div><h4>Instagram</h4><a href="https://instagram.com/msrent.aquariums" target="_blank" rel="noopener">@msrent.aquariums</a><p>Nuestros montajes, día a día.</p></div>
+        </div>
+        <div class="mapa">
+          <div class="retic" aria-hidden="true"></div><div class="rio" aria-hidden="true"></div>
+          <div class="pin" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 22s8-6 8-12a8 8 0 10-16 0c0 6 8 12 8 12z"/><circle cx="12" cy="10" r="3" fill="#fff"/></svg></div>
+          <div class="mapa-aviso">
+            <b>Vamos a tu espacio</b>
+            <span>Visitamos, medimos y te asesoramos sin coste.</span>
+            <a class="btn btn-primario btn-peq" href="https://wa.me/34652088553" target="_blank" rel="noopener">Pedir visita por WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+</main>
+
+<!-- ======================= MODAL PRODUCTO ======================= -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitulo">
+  <div class="modal-fondo" data-cerrar-modal></div>
+  <div class="modal-caja">
+    <button class="modal-cerrar" data-cerrar-modal aria-label="Cerrar ficha">✕</button>
+    <div class="modal-visual"><div class="luz-agua"></div><div id="modalVisual"></div></div>
+    <div class="modal-cuerpo">
+      <span class="producto-cat" id="modalCat"></span>
+      <h3 id="modalTitulo"></h3>
+      <p id="modalDesc"></p>
+      <ul class="ficha" id="modalFicha"></ul>
+      <div class="producto-acciones">
+        <button class="btn btn-primario" id="modalCta">Quiero este plan</button>
+        <button class="btn btn-fantasma" data-cerrar-modal>Seguir viendo</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= PIE ======================= -->
+<footer class="pie">
+  <div class="contenedor">
+    <div class="pie-rejilla">
+      <div class="pie-marca">
+        <img src="assets/logo-msrent-aquariums.png" alt="MSRent Aquariums" />
+        <p style="font-size:.95rem">Alquiler y mantenimiento integral de acuarios. Acuarios que inspiran, desde 2014.</p>
+        <div class="redes">
+          <a href="https://instagram.com/msrent.aquariums" target="_blank" rel="noopener" aria-label="Instagram de MSRent Aquariums"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="https://wa.me/34652088553" target="_blank" rel="noopener" aria-label="WhatsApp de MSRent Aquariums"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M3.5 20.5l1.3-4.2A8.3 8.3 0 1112 20.3a8.4 8.4 0 01-4.2-1.1z"/><path d="M9 9.2c.2 1 .7 2 1.5 2.8.8.8 1.8 1.3 2.8 1.5l.9-1.2 1.9.9c-.2 1-1.1 1.5-2.1 1.4a7 7 0 01-5.9-5.9c-.1-1 .4-1.9 1.4-2.1l.9 1.9z"/></svg></a>
+          <a href="mailto:msrent.aquariums@gmail.com" aria-label="Correo de MSRent Aquariums"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M3 7l9 6 9-6"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#inicio" data-ir="inicio">Inicio</a></li>
+          <li><a href="#nosotros" data-ir="nosotros">Quiénes somos</a></li>
+          <li><a href="#tienda" data-ir="tienda">Tienda</a></li>
+          <li><a href="#contacto" data-ir="contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="#tienda" data-ir="tienda">Alquiler de acuarios</a></li>
+          <li><a href="#tienda" data-ir="tienda">Mantenimiento</a></li>
+          <li><a href="#tienda" data-ir="tienda">Acuarios a medida</a></li>
+          <li><a href="#tienda" data-ir="tienda">Acuarios marinos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="tel:+34652088553">652 088 553</a></li>
+          <li><a href="mailto:msrent.aquariums@gmail.com">msrent.aquariums@gmail.com</a></li>
+          <li><a href="https://instagram.com/msrent.aquariums" target="_blank" rel="noopener">@msrent.aquariums</a></li>
+          <li>Lun a Vie · 9:00–18:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pie-legal">
+      <span>© <span id="anyo"></span> MSRent Aquariums. Todos los derechos reservados.</span>
+      <span>Aviso legal · Privacidad · Cookies</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ---------- Navegación entre páginas ---------- */
+  var paginas = ['inicio','nosotros','tienda','contacto'];
+  function irA(id, hacerScroll){
+    if(paginas.indexOf(id) === -1){ id = 'inicio'; }
+    document.querySelectorAll('.pagina').forEach(function(p){ p.classList.remove('activa'); });
+    document.getElementById('pagina-' + id).classList.add('activa');
+    document.querySelectorAll('.nav-enlace').forEach(function(a){
+      a.classList.toggle('activo', a.dataset.ir === id);
+    });
+    if(history.replaceState){ history.replaceState(null, '', '#' + id); }
+    else { location.hash = id; }
+    if(hacerScroll !== false){ window.scrollTo({ top:0, behavior:'smooth' }); }
+    cerrarMenu();
+    prepararRevelado();
+    document.title = ({
+      inicio:'MSRent Aquariums · Acuarios que inspiran',
+      nosotros:'Quiénes somos · MSRent Aquariums',
+      tienda:'Tienda · MSRent Aquariums',
+      contacto:'Contacto · MSRent Aquariums'
+    })[id];
+  }
+
+  document.addEventListener('click', function(e){
+    var ir = e.target.closest('[data-ir]');
+    if(ir){ e.preventDefault(); irA(ir.dataset.ir, true); return; }
+
+    var sc = e.target.closest('[data-scroll]');
+    if(sc){
+      e.preventDefault();
+      irA('inicio', false);
+      var destino = document.querySelector(sc.dataset.scroll);
+      if(destino){ setTimeout(function(){ destino.scrollIntoView({ behavior:'smooth', block:'start' }); }, 60); }
+    }
+  });
+
+  window.addEventListener('hashchange', function(){
+    irA((location.hash || '#inicio').slice(1), false);
+  });
+
+  /* ---------- Menú móvil ---------- */
+  var btnMenu = document.getElementById('btnMenu');
+  var nav = document.getElementById('nav');
+  function cerrarMenu(){ nav.classList.remove('abierto'); btnMenu.setAttribute('aria-expanded','false'); }
+  btnMenu.addEventListener('click', function(){
+    var abierto = nav.classList.toggle('abierto');
+    btnMenu.setAttribute('aria-expanded', String(abierto));
+  });
+
+  /* ---------- Cabecera al hacer scroll ---------- */
+  var cabecera = document.getElementById('cabecera');
+  window.addEventListener('scroll', function(){
+    cabecera.classList.toggle('fija', window.scrollY > 20);
+  }, { passive:true });
+
+  /* ---------- Burbujas del acuario ---------- */
+  var acuario = document.getElementById('acuario');
+  if(acuario){
+    for(var i = 0; i < 16; i++){
+      var b = document.createElement('span');
+      b.className = 'burbuja';
+      var tam = 4 + Math.random() * 11;
+      b.style.width = b.style.height = tam.toFixed(1) + 'px';
+      b.style.left = (5 + Math.random() * 90).toFixed(1) + '%';
+      b.style.animationDuration = (7 + Math.random() * 9).toFixed(1) + 's';
+      b.style.animationDelay = '-' + (Math.random() * 12).toFixed(1) + 's';
+      b.style.setProperty('--dx', (Math.random() * 46 - 23).toFixed(0) + 'px');
+      acuario.appendChild(b);
+    }
+  }
+
+  /* ---------- Revelado al hacer scroll ---------- */
+  var observador = ('IntersectionObserver' in window) ? new IntersectionObserver(function(entradas){
+    entradas.forEach(function(en){
+      if(en.isIntersecting){ en.target.classList.add('visible'); observador.unobserve(en.target); }
+    });
+  }, { threshold:.14, rootMargin:'0px 0px -40px 0px' }) : null;
+
+  function prepararRevelado(){
+    document.querySelectorAll('.pagina.activa .revelar:not(.visible)').forEach(function(el, i){
+      el.style.transitionDelay = (Math.min(i, 6) * 70) + 'ms';
+      if(observador){ observador.observe(el); } else { el.classList.add('visible'); }
+    });
+  }
+
+  /* ---------- Contadores del héroe ---------- */
+  function animarContadores(){
+    document.querySelectorAll('[data-contador]').forEach(function(el){
+      if(el.dataset.hecho) return;
+      el.dataset.hecho = '1';
+      var fin = parseFloat(el.dataset.contador), suf = el.dataset.sufijo || '', ini = performance.now(), dur = 1500;
+      (function paso(t){
+        var p = Math.min((t - ini) / dur, 1);
+        var e = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(fin * e) + suf;
+        if(p < 1) requestAnimationFrame(paso);
+      })(ini);
+    });
+  }
+
+  /* ---------- Pasos "Cómo funciona" (acordeón) ---------- */
+  document.querySelectorAll('.paso').forEach(function(paso){
+    paso.addEventListener('click', function(){
+      var abierto = paso.getAttribute('aria-expanded') === 'true';
+      document.querySelectorAll('.paso').forEach(function(p){ p.setAttribute('aria-expanded','false'); });
+      paso.setAttribute('aria-expanded', String(!abierto));
+    });
+  });
+
+  /* ---------- FAQ desplegable ---------- */
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var boton = item.querySelector('.faq-boton');
+    var resp = item.querySelector('.faq-respuesta');
+    boton.addEventListener('click', function(){
+      var abierta = item.classList.contains('abierta');
+      document.querySelectorAll('.faq-item').forEach(function(o){
+        o.classList.remove('abierta');
+        o.querySelector('.faq-boton').setAttribute('aria-expanded','false');
+        o.querySelector('.faq-respuesta').style.maxHeight = null;
+      });
+      if(!abierta){
+        item.classList.add('abierta');
+        boton.setAttribute('aria-expanded','true');
+        resp.style.maxHeight = resp.scrollHeight + 'px';
+      }
+    });
+  });
+
+  /* ---------- Tienda ---------- */
+  var SVG_ACUARIO = '<svg viewBox="0 0 160 110" aria-hidden="true"><defs><linearGradient id="pv1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5ee0e6"/><stop offset="1" stop-color="#0f6fb5"/></linearGradient></defs><rect x="8" y="10" width="144" height="84" rx="12" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.75)" stroke-width="4"/><path d="M8 70q28 12 54 0t54 0 36 4v12a12 12 0 01-12 12H20A12 12 0 018 86z" fill="url(#pv1)" opacity=".55"/><path d="M60 52q14-14 30-6t-2 18q-16 8-28-12z" fill="url(#pv1)"/><path d="M60 52l-12-8v24z" fill="#45d2d8"/><circle cx="84" cy="48" r="3" fill="#fff"/><circle cx="118" cy="30" r="5" fill="rgba(255,255,255,.6)"/><circle cx="128" cy="44" r="3" fill="rgba(255,255,255,.45)"/><path d="M36 92q2-26 10-32 4 18-2 32z" fill="#3fb98a"/><path d="M126 92q-2-22-10-26 -4 14 2 26z" fill="#3fb98a"/></svg>';
+  var SVG_CORAL = '<svg viewBox="0 0 160 110" aria-hidden="true"><defs><linearGradient id="pv2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb27a"/><stop offset="1" stop-color="#ff6f8b"/></linearGradient></defs><rect x="8" y="10" width="144" height="84" rx="12" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.7)" stroke-width="4"/><path d="M50 92c-6-18-2-34 6-42 4 12 2 16 6 20 2-12 8-18 14-20 2 14-2 20 2 26 4-8 10-10 14-8 2 10-6 18-6 24z" fill="url(#pv2)"/><circle cx="110" cy="34" r="6" fill="#45d2d8" opacity=".8"/><circle cx="122" cy="50" r="4" fill="#45d2d8" opacity=".6"/><path d="M28 40q10-10 20 0-10 10-20 0z" fill="#fff" opacity=".5"/></svg>';
+  var SVG_SERVICIO = '<svg viewBox="0 0 160 110" aria-hidden="true"><defs><linearGradient id="pv3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9ff0e4"/><stop offset="1" stop-color="#19a7c9"/></linearGradient></defs><circle cx="80" cy="52" r="34" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="4"/><path d="M80 30v22l15 9" stroke="url(#pv3)" stroke-width="6" stroke-linecap="round" fill="none"/><path d="M26 88q14-10 28 0t28 0 28 0 24-6" stroke="url(#pv3)" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="44" cy="28" r="5" fill="rgba(255,255,255,.55)"/><circle cx="120" cy="30" r="4" fill="rgba(255,255,255,.45)"/></svg>';
+  var SVG_DISENO = '<svg viewBox="0 0 160 110" aria-hidden="true"><defs><linearGradient id="pv4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#45d2d8"/><stop offset="1" stop-color="#3fb98a"/></linearGradient></defs><path d="M80 12l56 32v32L80 98 24 76V44z" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.75)" stroke-width="4" stroke-linejoin="round"/><path d="M80 44l28 16v16L80 92 52 76V60z" fill="url(#pv4)" opacity=".85"/><circle cx="80" cy="36" r="5" fill="#fff" opacity=".8"/></svg>';
+
+  var PRODUCTOS = [
+    { id:'nano', cat:'dulce', etiq:'Agua dulce', nombre:'Nano Reef Dulce 60', precio:89, unidad:'/mes', cinta:'Más vendido', visual:SVG_ACUARIO,
+      desc:'Acuario plantado de 60 litros ideal para recepciones y despachos pequeños. Luz LED regulable y fauna tranquila.',
+      ficha:[['Volumen','60 litros'],['Medidas','60 × 30 × 36 cm'],['Fauna','Neones, corydoras y gambas'],['Visitas','Quincenales'],['Instalación','Incluida'],['Permanencia','12 meses']] },
+    { id:'natura', cat:'dulce', etiq:'Agua dulce', nombre:'Natura Plantado 120', precio:149, unidad:'/mes', cinta:'', visual:SVG_ACUARIO,
+      desc:'Paisaje natural estilo "nature aquarium" con troncos, roca seiryu y alfombra vegetal. El favorito de las oficinas.',
+      ficha:[['Volumen','180 litros'],['Medidas','120 × 45 × 50 cm'],['Fauna','Cardúmenes tropicales'],['CO₂','Inyección automática'],['Visitas','Quincenales'],['Mueble','A elegir 6 acabados']] },
+    { id:'biotopo', cat:'dulce', etiq:'Agua dulce', nombre:'Biotopo Amazonas 200', precio:199, unidad:'/mes', cinta:'', visual:SVG_ACUARIO,
+      desc:'Reproducción fiel de un río amazónico: agua ambarina, hojas de almendro y escalares como protagonistas.',
+      ficha:[['Volumen','240 litros'],['Medidas','150 × 50 × 55 cm'],['Fauna','Escalares y discos'],['Filtración','Sump silencioso'],['Visitas','Quincenales'],['Permanencia','12 meses']] },
+    { id:'arrecife', cat:'marino', etiq:'Marino', nombre:'Arrecife Coral 250', precio:329, unidad:'/mes', cinta:'Premium', visual:SVG_CORAL,
+      desc:'Acuario marino de corales blandos con skimmer, osmosis y control digital de parámetros en remoto.',
+      ficha:[['Volumen','250 litros'],['Medidas','140 × 55 × 55 cm'],['Fauna','Peces payaso y gobios'],['Corales','Blandos y LPS'],['Visitas','Semanales'],['Monitorización','App 24/7']] },
+    { id:'oceanico', cat:'marino', etiq:'Marino', nombre:'Oceánico Panorámico 500', precio:589, unidad:'/mes', cinta:'', visual:SVG_CORAL,
+      desc:'Pieza central de gran formato para hoteles y vestíbulos corporativos. Visión panorámica de 2 metros.',
+      ficha:[['Volumen','500 litros'],['Medidas','200 × 70 × 60 cm'],['Fauna','Arrecife mixto'],['Iluminación','LED espectro completo'],['Visitas','Semanales'],['Instalación','2 jornadas']] },
+    { id:'muro', cat:'diseno', etiq:'Diseño especial', nombre:'Muro de Agua Vertical', precio:449, unidad:'/mes', cinta:'Nuevo', visual:SVG_DISENO,
+      desc:'Acuario vertical empotrado que funciona como separador de ambientes. Visible por ambas caras.',
+      ficha:[['Formato','Vertical 180 cm'],['Grosor','22 cm'],['Obra','Incluida'],['Fauna','Cardumen monoespecie'],['Luz','Escenas programables'],['Entrega','4-6 semanas']] },
+    { id:'mesa', cat:'diseno', etiq:'Diseño especial', nombre:'Mesa Acuario Lounge', precio:259, unidad:'/mes', cinta:'', visual:SVG_DISENO,
+      desc:'Mesa baja con acuario integrado y sobre de cristal templado. Perfecta para salas de espera y lounges.',
+      ficha:[['Volumen','90 litros'],['Medidas','110 × 60 × 45 cm'],['Sobre','Cristal 12 mm'],['Fauna','Gambas y killis'],['Visitas','Quincenales'],['Entrega','3 semanas']] },
+    { id:'mantenimiento', cat:'servicio', etiq:'Servicio', nombre:'Plan de Mantenimiento', precio:59, unidad:'/visita', cinta:'', visual:SVG_SERVICIO,
+      desc:'¿Ya tienes acuario? Lo cuidamos nosotros: analítica, limpieza, poda y sanidad de la fauna.',
+      ficha:[['Duración','90 minutos'],['Incluye','Consumibles básicos'],['Analítica','6 parámetros'],['Informe','Digital tras la visita'],['Cobertura','Área metropolitana'],['Alta','Sin permanencia']] },
+    { id:'rescate', cat:'servicio', etiq:'Servicio', nombre:'Rescate y Reacondicionado', precio:180, unidad:'único', cinta:'', visual:SVG_SERVICIO,
+      desc:'Recuperamos acuarios descuidados: control de algas, reinicio del filtro biológico y nuevo paisajismo.',
+      ficha:[['Plazo','2 visitas en 15 días'],['Incluye','Materiales de reinicio'],['Garantía','60 días'],['Seguimiento','Telefónico'],['Traslado','Opcional'],['Pago','Único']] },
+    { id:'vacaciones', cat:'servicio', etiq:'Servicio', nombre:'Cuidado en Vacaciones', precio:35, unidad:'/semana', cinta:'', visual:SVG_SERVICIO,
+      desc:'Nos ocupamos de tu acuario mientras no estás: alimentación, control de equipos y aviso ante incidencias.',
+      ficha:[['Frecuencia','2 pasos/semana'],['Alimentación','Dosificada'],['Fotos','Reporte diario'],['Urgencias','Incluidas'],['Zona','Barcelona'],['Mínimo','1 semana']] }
+  ];
+
+  var rejilla = document.getElementById('rejillaProductos');
+  var vacio = document.getElementById('vacio');
+
+  function pintarProductos(filtro){
+    var lista = PRODUCTOS.filter(function(p){ return filtro === 'todos' || p.cat === filtro; });
+    rejilla.innerHTML = lista.map(function(p, i){
+      return '<article class="producto" style="animation-delay:' + (i * 55) + 'ms">' +
+        '<div class="producto-visual"><div class="luz-agua"></div>' + (p.cinta ? '<span class="producto-cinta">' + p.cinta + '</span>' : '') + p.visual + '</div>' +
+        '<div class="producto-cuerpo">' +
+          '<span class="producto-cat">' + p.etiq + '</span>' +
+          '<h3>' + p.nombre + '</h3>' +
+          '<p>' + p.desc + '</p>' +
+          '<div class="precio"><strong>' + p.precio + ' €</strong><span>' + p.unidad + '</span></div>' +
+          '<div class="producto-acciones">' +
+            '<button class="btn btn-primario btn-peq" data-producto="' + p.id + '">Ver detalles</button>' +
+            '<button class="btn btn-fantasma btn-peq" data-ir="contacto">Solicitar</button>' +
+          '</div>' +
+        '</div></article>';
+    }).join('');
+    vacio.hidden = lista.length > 0;
+  }
+
+  document.getElementById('filtros').addEventListener('click', function(e){
+    var b = e.target.closest('.filtro');
+    if(!b) return;
+    document.querySelectorAll('.filtro').forEach(function(f){ f.classList.remove('activo'); });
+    b.classList.add('activo');
+    pintarProductos(b.dataset.filtro);
+  });
+
+  pintarProductos('todos');
+
+  /* ---------- Modal de producto ---------- */
+  var modal = document.getElementById('modal');
+  var ultimoFoco = null;
+
+  function abrirModal(id){
+    var p = PRODUCTOS.find(function(x){ return x.id === id; });
+    if(!p) return;
+    ultimoFoco = document.activeElement;
+    document.getElementById('modalVisual').innerHTML = p.visual;
+    document.getElementById('modalCat').textContent = p.etiq;
+    document.getElementById('modalTitulo').textContent = p.nombre;
+    document.getElementById('modalDesc').textContent = p.desc;
+    document.getElementById('modalFicha').innerHTML = p.ficha.map(function(f){
+      return '<li><b>' + f[0] + '</b>' + f[1] + '</li>';
+    }).join('') + '<li><b>Precio</b>' + p.precio + ' € ' + p.unidad + '</li>';
+    modal.classList.add('abierto');
+    document.body.style.overflow = 'hidden';
+    modal.querySelector('.modal-cerrar').focus();
+  }
+
+  function cerrarModal(){
+    modal.classList.remove('abierto');
+    document.body.style.overflow = '';
+    if(ultimoFoco) ultimoFoco.focus();
+  }
+
+  document.addEventListener('click', function(e){
+    var ver = e.target.closest('[data-producto]');
+    if(ver){ abrirModal(ver.dataset.producto); return; }
+    if(e.target.closest('[data-cerrar-modal]')){ cerrarModal(); }
+  });
+
+  document.getElementById('modalCta').addEventListener('click', function(){
+    cerrarModal();
+    irA('contacto', true);
+    setTimeout(function(){
+      var m = document.getElementById('mensaje');
+      m.value = 'Me interesa el plan "' + document.getElementById('modalTitulo').textContent + '". ¿Podéis enviarme una propuesta?';
+      m.focus();
+    }, 420);
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){ if(modal.classList.contains('abierto')) cerrarModal(); cerrarMenu(); }
+  });
+
+  /* ---------- Formulario de contacto ---------- */
+  var form = document.getElementById('formContacto');
+  function marcar(campoEl, ok){ campoEl.classList.toggle('invalido', !ok); return ok; }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var nombre = document.getElementById('nombre');
+    var email = document.getElementById('email');
+    var tel = document.getElementById('telefono');
+    var tipo = document.getElementById('tipo');
+    var msg = document.getElementById('mensaje');
+    var priv = document.getElementById('privacidad');
+    var ok = true;
+
+    ok = marcar(nombre.closest('.campo'), nombre.value.trim().length >= 2) && ok;
+    ok = marcar(email.closest('.campo'), /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(email.value.trim())) && ok;
+    ok = marcar(tel.closest('.campo'), tel.value.trim() === '' || tel.value.replace(/\D/g, '').length >= 9) && ok;
+    ok = marcar(tipo.closest('.campo'), tipo.value !== '') && ok;
+    ok = marcar(msg.closest('.campo'), msg.value.trim().length >= 10) && ok;
+    ok = marcar(priv.closest('.campo'), priv.checked) && ok;
+
+    if(!ok){
+      var primero = form.querySelector('.campo.invalido input, .campo.invalido select, .campo.invalido textarea');
+      if(primero) primero.focus();
+      return;
+    }
+
+    document.getElementById('nombreExito').textContent = nombre.value.trim().split(' ')[0];
+    var aviso = document.getElementById('avisoExito');
+    aviso.classList.add('visible');
+    aviso.scrollIntoView({ behavior:'smooth', block:'center' });
+    form.reset();
+  });
+
+  form.querySelectorAll('input,select,textarea').forEach(function(el){
+    el.addEventListener('input', function(){ el.closest('.campo').classList.remove('invalido'); });
+  });
+
+  /* ---------- Arranque ---------- */
+  document.getElementById('anyo').textContent = new Date().getFullYear();
+  irA((location.hash || '#inicio').slice(1), false);
+  prepararRevelado();
+  animarContadores();
+})();
+</script>
+</body>
+</html>
