@@ -292,6 +292,7 @@ main{padding-top:86px}
 .pie .marca-texto strong{color:#fff}
 .pie-marca img{width:64px;background:#fff;border-radius:16px;padding:6px;margin-bottom:1rem}
 .pie-legal{margin-top:2.6rem;padding-top:1.4rem;border-top:1px solid rgba(255,255,255,.12);display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;font-size:.85rem}
+.enlaces-legales a{text-decoration:underline;text-underline-offset:3px}
 .redes{display:flex;gap:.6rem}
 .redes a{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.08);transition:var(--trans)}
 .redes a:hover{background:var(--laguna);color:#fff;transform:translateY(-3px)}
@@ -429,6 +430,23 @@ main{padding-top:86px}
 .mapa-aviso span{font-size:.84rem;color:var(--tinta-suave)}
 .mapa-aviso .btn{margin-top:.6rem;justify-self:start}
 .mapa .rio{position:absolute;left:-10%;right:-10%;top:58%;height:46px;background:linear-gradient(90deg,var(--laguna),var(--aqua));opacity:.5;transform:rotate(-7deg);filter:blur(1px)}
+
+/* ---------- Páginas legales ---------- */
+.texto-legal{max-width:800px;margin-inline:auto}
+.texto-legal h2{font-size:clamp(1.25rem,2.4vw,1.6rem);margin:2.4rem 0 .8rem;padding-top:1.6rem;border-top:1px solid var(--borde)}
+.texto-legal h2:first-of-type{border-top:none;padding-top:0;margin-top:1.4rem}
+.texto-legal p{color:#3c5d76}
+.texto-legal a{color:var(--oceano);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.texto-legal a:hover{color:var(--laguna)}
+.actualizado{font-size:.86rem;color:var(--tinta-suave);background:var(--espuma);display:inline-block;padding:.4rem .9rem;border-radius:999px}
+.lista-legal{padding-left:0;list-style:none;display:grid;gap:.8rem;margin:0 0 1rem}
+.lista-legal li{position:relative;padding-left:1.7rem;color:#3c5d76}
+.lista-legal li::before{content:'';position:absolute;left:0;top:.62em;width:9px;height:9px;border-radius:50%;background:var(--aqua)}
+.datos-legales{list-style:none;padding:0;margin:1.2rem 0 1.6rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.7rem}
+.datos-legales li{background:var(--espuma);border-radius:var(--r-s);padding:.8rem 1rem;font-size:.93rem;color:var(--profundo)}
+.datos-legales b{display:block;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--tinta-suave);margin-bottom:.15rem}
+.caja-legal{margin-top:2.6rem;padding:1.4rem 1.6rem;border-radius:var(--r-m);background:linear-gradient(135deg,rgba(25,167,201,.1),rgba(63,185,138,.1));border:1px solid rgba(25,167,201,.3)}
+.caja-legal p{margin:0}
 
 /* ---------- Botón flotante de WhatsApp ---------- */
 .wa-flotante{
@@ -903,7 +921,7 @@ main{padding-top:86px}
           </div>
         </div>
         <div class="campo"><label for="mensaje">¿Qué tienes en mente? *</label><textarea id="mensaje" name="mensaje" placeholder="Tengo un hueco de 160 cm en la sala de espera y me gustaría algo plantado…" required></textarea><span class="error">Cuéntanos algo más (mínimo 10 caracteres).</span></div>
-        <div class="campo"><label class="casilla"><input type="checkbox" id="privacidad" required /> <span>He leído y acepto la política de privacidad y el tratamiento de mis datos para recibir una propuesta comercial. *</span></label><span class="error">Debes aceptar la política de privacidad.</span></div>
+        <div class="campo"><label class="casilla"><input type="checkbox" id="privacidad" required /> <span>He leído y acepto la <a href="#privacidad" data-ir="privacidad" style="color:var(--oceano);font-weight:600;text-decoration:underline">política de privacidad</a> y el tratamiento de mis datos para recibir una propuesta comercial. *</span></label><span class="error">Debes aceptar la política de privacidad.</span></div>
         <button type="submit" class="btn btn-primario" id="btnEnviar" style="width:100%">
           <span class="texto-btn">Enviar solicitud</span>
           <svg class="icono-btn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg>
@@ -941,6 +959,130 @@ main{padding-top:86px}
             <a class="btn btn-primario btn-peq" href="https://wa.me/34652088553" target="_blank" rel="noopener">Pedir visita por WhatsApp</a>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ======================= PÁGINA: PRIVACIDAD ======================= -->
+<div class="pagina" id="pagina-privacidad">
+  <section class="cabecera-pagina">
+    <div class="contenedor">
+      <span class="etiqueta">Información legal</span>
+      <h1>Política de <span class="texto-agua">privacidad</span></h1>
+      <p>Cómo tratamos los datos que nos facilitas a través de esta web, conforme al RGPD y a la LOPDGDD.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:1rem">
+    <div class="contenedor texto-legal revelar">
+      <p class="actualizado">Última actualización: <span data-fecha-legal></span></p>
+
+      <h2>1. Responsable del tratamiento</h2>
+      <ul class="datos-legales">
+        <!-- PENDIENTE: añadir aquí los datos fiscales del titular. Descomenta y rellena:
+        <li><b>Titular</b>Nombre y apellidos o razón social</li>
+        <li><b>NIF / CIF</b>00000000X</li>
+        <li><b>Domicilio</b>Calle, número, código postal y localidad</li>
+        -->
+        <li><b>Nombre comercial</b>MSRent Aquariums</li>
+        <li><b>Correo</b><a href="mailto:msrent.aquariums@gmail.com">msrent.aquariums@gmail.com</a></li>
+        <li><b>Teléfono</b><a href="tel:+34652088553">652 088 553</a></li>
+      </ul>
+
+      <h2>2. Qué datos recogemos</h2>
+      <p>Únicamente los que nos facilitas voluntariamente a través del formulario de contacto: <strong>nombre y apellidos, dirección de correo electrónico, teléfono (opcional), tipo de espacio y el contenido del mensaje</strong>. No recogemos datos de categorías especiales ni elaboramos perfiles de forma automatizada.</p>
+      <p>Si te pones en contacto por WhatsApp, el tratamiento de la conversación se rige además por la política de privacidad de WhatsApp Ireland Ltd.</p>
+
+      <h2>3. Para qué los usamos y con qué legitimación</h2>
+      <ul class="lista-legal">
+        <li><strong>Atender tu solicitud y elaborar un presupuesto.</strong> Base jurídica: tu consentimiento expreso, prestado al marcar la casilla del formulario, y la aplicación de medidas precontractuales a petición tuya (art. 6.1.a y 6.1.b del RGPD).</li>
+        <li><strong>Mantener el contacto comercial posterior</strong> relacionado con la solicitud realizada. Base jurídica: interés legítimo en responder a quien nos contacta (art. 6.1.f del RGPD).</li>
+        <li><strong>Cumplir obligaciones legales</strong> de carácter fiscal o contable, si llegas a contratar nuestros servicios (art. 6.1.c del RGPD).</li>
+      </ul>
+      <p>No utilizamos tus datos para enviarte publicidad masiva ni los cedemos a terceros con fines comerciales.</p>
+
+      <h2>4. Durante cuánto tiempo los conservamos</h2>
+      <p>Si no llegamos a prestarte ningún servicio, conservaremos tu solicitud durante un máximo de <strong>doce meses</strong> desde el último contacto, y después la eliminaremos. Si contratas con nosotros, los datos se conservarán mientras dure la relación y, una vez finalizada, durante los plazos legalmente exigidos en materia fiscal y mercantil (hasta seis años).</p>
+
+      <h2>5. Destinatarios y encargados del tratamiento</h2>
+      <p>No cedemos tus datos a terceros, salvo obligación legal. Sí utilizamos proveedores que actúan como encargados del tratamiento y que han firmado los correspondientes compromisos de confidencialidad:</p>
+      <ul class="lista-legal">
+        <li><strong>Web3Forms</strong> — procesa el envío del formulario y nos lo remite por correo. Los datos se almacenan cifrados en servidores de Amazon Web Services.</li>
+        <li><strong>Google (Gmail)</strong> — servicio de correo electrónico donde recibimos y conservamos tu solicitud.</li>
+        <li><strong>GitHub Pages</strong> — alojamiento de esta página web.</li>
+      </ul>
+      <p>Alguno de estos proveedores puede realizar transferencias internacionales de datos fuera del Espacio Económico Europeo, amparadas en las cláusulas contractuales tipo aprobadas por la Comisión Europea.</p>
+
+      <h2>6. Tus derechos</h2>
+      <p>Puedes ejercer en cualquier momento tus derechos de <strong>acceso, rectificación, supresión, oposición, limitación del tratamiento y portabilidad</strong>, así como retirar el consentimiento prestado sin que ello afecte a la licitud del tratamiento previo.</p>
+      <p>Para ello, escríbenos a <a href="mailto:msrent.aquariums@gmail.com">msrent.aquariums@gmail.com</a> indicando el derecho que deseas ejercer y adjuntando copia de tu documento de identidad. Responderemos en el plazo máximo de un mes.</p>
+      <p>Si consideras que no hemos atendido correctamente tu solicitud, puedes presentar una reclamación ante la <a href="https://www.aepd.es" target="_blank" rel="noopener">Agencia Española de Protección de Datos</a> (C/ Jorge Juan 6, 28001 Madrid).</p>
+
+      <h2>7. Seguridad</h2>
+      <p>Aplicamos las medidas técnicas y organizativas necesarias para proteger tus datos frente a la pérdida, el uso indebido o el acceso no autorizado. Toda la información se transmite mediante conexión cifrada HTTPS.</p>
+
+      <h2>8. Cookies</h2>
+      <p>Esta web <strong>no utiliza cookies propias ni de terceros</strong> con fines analíticos, publicitarios ni de seguimiento. Únicamente empleamos el almacenamiento local del navegador para recordar si has cerrado el botón flotante de WhatsApp durante tu visita, dato que no permite identificarte y que se borra al cerrar el navegador.</p>
+      <p>Las tipografías se cargan desde Google Fonts, lo que implica que tu dirección IP puede ser comunicada a dicho proveedor para poder servir los archivos.</p>
+
+      <div class="caja-legal">
+        <p>¿Alguna duda sobre cómo tratamos tus datos? Escríbenos a <a href="mailto:msrent.aquariums@gmail.com">msrent.aquariums@gmail.com</a> y te lo explicamos sin tecnicismos.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ======================= PÁGINA: AVISO LEGAL ======================= -->
+<div class="pagina" id="pagina-legal">
+  <section class="cabecera-pagina">
+    <div class="contenedor">
+      <span class="etiqueta">Información legal</span>
+      <h1>Aviso <span class="texto-agua">legal</span></h1>
+      <p>Condiciones de uso de este sitio web, conforme a la Ley 34/2002 de Servicios de la Sociedad de la Información.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:1rem">
+    <div class="contenedor texto-legal revelar">
+      <p class="actualizado">Última actualización: <span data-fecha-legal></span></p>
+
+      <h2>1. Datos identificativos</h2>
+      <p>En cumplimiento del artículo 10 de la LSSI-CE, se informa de que el titular de este sitio web es:</p>
+      <ul class="datos-legales">
+        <!-- PENDIENTE: añadir aquí los datos fiscales del titular. Descomenta y rellena:
+        <li><b>Titular</b>Nombre y apellidos o razón social</li>
+        <li><b>NIF / CIF</b>00000000X</li>
+        <li><b>Domicilio</b>Calle, número, código postal y localidad</li>
+        -->
+        <li><b>Actividad</b>Alquiler, instalación y mantenimiento de acuarios</li>
+        <li><b>Correo</b><a href="mailto:msrent.aquariums@gmail.com">msrent.aquariums@gmail.com</a></li>
+        <li><b>Teléfono</b><a href="tel:+34652088553">652 088 553</a></li>
+      </ul>
+
+      <h2>2. Objeto y condiciones de uso</h2>
+      <p>Este sitio web tiene como finalidad dar a conocer los servicios de MSRent Aquariums y facilitar el contacto con personas interesadas. El acceso es gratuito y la navegación implica la aceptación de las presentes condiciones.</p>
+      <p>El usuario se compromete a hacer un uso adecuado de los contenidos y a no emplearlos para actividades ilícitas, lesivas de derechos de terceros o que puedan dañar, inutilizar o sobrecargar el sitio web.</p>
+
+      <h2>3. Propiedad intelectual e industrial</h2>
+      <p>Todos los contenidos de este sitio —textos, diseño gráfico, código fuente, ilustraciones, logotipo y marca <strong>MSRent Aquariums</strong>— son titularidad del responsable o se utilizan con la debida autorización, y están protegidos por la normativa de propiedad intelectual e industrial.</p>
+      <p>Queda prohibida su reproducción, distribución, comunicación pública o transformación sin autorización expresa y por escrito del titular.</p>
+
+      <h2>4. Información sobre los servicios y precios</h2>
+      <p>Los importes mostrados en el apartado Tienda tienen carácter orientativo y se expresan, salvo indicación contraria, sin IVA. La cuota definitiva de cada proyecto se concreta en el presupuesto personalizado que se entrega tras la visita técnica, único documento con valor contractual.</p>
+      <p>El titular se reserva el derecho a modificar en cualquier momento los servicios y las condiciones ofrecidas, sin que ello afecte a los presupuestos ya aceptados.</p>
+
+      <h2>5. Enlaces a terceros</h2>
+      <p>Este sitio puede incluir enlaces a plataformas externas como Instagram o WhatsApp. No nos hacemos responsables de los contenidos ni de las políticas de privacidad de dichos sitios, cuyo acceso se realiza bajo la exclusiva responsabilidad del usuario.</p>
+
+      <h2>6. Exclusión de responsabilidad</h2>
+      <p>El titular trabaja para mantener la información actualizada y libre de errores, pero no garantiza la ausencia de interrupciones o fallos en el acceso al sitio web, ni se responsabiliza de los daños derivados de su uso.</p>
+
+      <h2>7. Legislación aplicable</h2>
+      <p>Las presentes condiciones se rigen por la legislación española. Para la resolución de cualquier controversia, las partes se someten a los juzgados y tribunales del domicilio del usuario cuando este tenga la condición de consumidor.</p>
+
+      <div class="caja-legal">
+        <p>Consulta también nuestra <a href="#privacidad" data-ir="privacidad">política de privacidad</a> para saber cómo tratamos tus datos personales.</p>
       </div>
     </div>
   </section>
@@ -1021,7 +1163,11 @@ main{padding-top:86px}
     </div>
     <div class="pie-legal">
       <span>© <span id="anyo"></span> MSRent Aquariums. Todos los derechos reservados.</span>
-      <span>Aviso legal · Privacidad · Cookies</span>
+      <span class="enlaces-legales">
+        <a href="#legal" data-ir="legal">Aviso legal</a> ·
+        <a href="#privacidad" data-ir="privacidad">Política de privacidad</a> ·
+        <a href="#privacidad" data-ir="privacidad">Cookies</a>
+      </span>
     </div>
   </div>
 </footer>
@@ -1031,7 +1177,7 @@ main{padding-top:86px}
   'use strict';
 
   /* ---------- Navegación entre páginas ---------- */
-  var paginas = ['inicio','nosotros','tienda','contacto'];
+  var paginas = ['inicio','nosotros','tienda','contacto','privacidad','legal'];
   function irA(id, hacerScroll){
     if(paginas.indexOf(id) === -1){ id = 'inicio'; }
     document.querySelectorAll('.pagina').forEach(function(p){ p.classList.remove('activa'); });
@@ -1049,7 +1195,9 @@ main{padding-top:86px}
       inicio:'MSRent Aquariums · Acuarios que inspiran',
       nosotros:'Quiénes somos · MSRent Aquariums',
       tienda:'Tienda · MSRent Aquariums',
-      contacto:'Contacto · MSRent Aquariums'
+      contacto:'Contacto · MSRent Aquariums',
+      privacidad:'Política de privacidad · MSRent Aquariums',
+      legal:'Aviso legal · MSRent Aquariums'
     })[id];
   }
 
@@ -1383,6 +1531,8 @@ main{padding-top:86px}
 
   /* ---------- Arranque ---------- */
   document.getElementById('anyo').textContent = new Date().getFullYear();
+  var fechaLegal = new Date().toLocaleDateString('es-ES', { day:'numeric', month:'long', year:'numeric' });
+  document.querySelectorAll('[data-fecha-legal]').forEach(function(el){ el.textContent = fechaLegal; });
   irA((location.hash || '#inicio').slice(1), false);
   prepararRevelado();
   animarContadores();
