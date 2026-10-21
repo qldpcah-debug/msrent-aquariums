@@ -396,6 +396,17 @@ main{padding-top:86px}
   background:rgba(63,185,138,.13);border:1px solid rgba(63,185,138,.4);color:#1d6b50;font-weight:500;font-size:.95rem;
 }
 .aviso-exito.visible{display:flex;animation:entrarPagina .4s both}
+.aviso-error{
+  display:none;align-items:center;gap:.9rem;margin-top:1.2rem;padding:1rem 1.2rem;border-radius:var(--r-m);
+  background:rgba(214,69,63,.09);border:1px solid rgba(214,69,63,.35);color:#9c322d;font-size:.95rem;
+}
+.aviso-error.visible{display:flex;animation:entrarPagina .4s both}
+.aviso-error a{color:#9c322d;text-decoration:underline;font-weight:600}
+.cargador{display:none;width:19px;height:19px;border-radius:50%;border:2.5px solid rgba(255,255,255,.4);border-top-color:#fff;animation:girar .7s linear infinite}
+@keyframes girar{to{transform:rotate(360deg)}}
+#btnEnviar.enviando{pointer-events:none;opacity:.85}
+#btnEnviar.enviando .icono-btn{display:none}
+#btnEnviar.enviando .cargador{display:block}
 .panel-contacto{display:grid;gap:1rem}
 .contacto-item{display:flex;gap:1rem;padding:1.3rem;border-radius:var(--r-m);background:#fff;border:1px solid var(--borde);transition:var(--trans)}
 .contacto-item:hover{transform:translateY(-4px);box-shadow:var(--sombra-s);border-color:rgba(25,167,201,.45)}
@@ -834,7 +845,13 @@ main{padding-top:86px}
 
   <section style="padding-top:1rem">
     <div class="contenedor contacto-rejilla">
-      <form class="formulario revelar" id="formContacto" novalidate>
+      <form class="formulario revelar" id="formContacto" action="https://api.web3forms.com/submit" method="POST" novalidate>
+        <!-- Clave pública de Web3Forms: sustituye el valor por tu access key -->
+        <input type="hidden" name="access_key" value="03368596-8eb0-4bfd-a5be-7847d46044eb" />
+        <input type="hidden" name="subject" value="Nueva solicitud desde msrentaquariums.com" />
+        <input type="hidden" name="from_name" value="Web MSRent Aquariums" />
+        <!-- Trampa antispam: invisible para personas, los robots la rellenan -->
+        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
         <h3>Solicita tu propuesta</h3>
         <p style="color:var(--tinta-suave);font-size:.95rem">Sin compromiso y sin coste. Solo necesitamos unos datos básicos.</p>
         <div class="fila">
@@ -856,13 +873,18 @@ main{padding-top:86px}
         </div>
         <div class="campo"><label for="mensaje">¿Qué tienes en mente? *</label><textarea id="mensaje" name="mensaje" placeholder="Tengo un hueco de 160 cm en la sala de espera y me gustaría algo plantado…" required></textarea><span class="error">Cuéntanos algo más (mínimo 10 caracteres).</span></div>
         <div class="campo"><label class="casilla"><input type="checkbox" id="privacidad" required /> <span>He leído y acepto la política de privacidad y el tratamiento de mis datos para recibir una propuesta comercial. *</span></label><span class="error">Debes aceptar la política de privacidad.</span></div>
-        <button type="submit" class="btn btn-primario" style="width:100%">
-          Enviar solicitud
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg>
+        <button type="submit" class="btn btn-primario" id="btnEnviar" style="width:100%">
+          <span class="texto-btn">Enviar solicitud</span>
+          <svg class="icono-btn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg>
+          <span class="cargador" aria-hidden="true"></span>
         </button>
         <div class="aviso-exito" id="avisoExito" role="status">
           <span class="ico">✅</span>
           <span><b>¡Solicitud enviada!</b><br>Gracias <span id="nombreExito"></span>, te escribiremos en menos de 72 horas.</span>
+        </div>
+        <div class="aviso-error" id="avisoError" role="alert">
+          <span class="ico">⚠️</span>
+          <span><b>No hemos podido enviar tu solicitud.</b><br>Escríbenos a <a href="mailto:msrent.aquariums@gmail.com">msrent.aquariums@gmail.com</a> o por <a href="https://wa.me/34652088553" target="_blank" rel="noopener">WhatsApp</a>.</span>
         </div>
       </form>
 
@@ -1214,6 +1236,11 @@ main{padding-top:86px}
   var form = document.getElementById('formContacto');
   function marcar(campoEl, ok){ campoEl.classList.toggle('invalido', !ok); return ok; }
 
+  var btnEnviar = document.getElementById('btnEnviar');
+  var textoBtn = btnEnviar.querySelector('.texto-btn');
+  var avisoExito = document.getElementById('avisoExito');
+  var avisoError = document.getElementById('avisoError');
+
   form.addEventListener('submit', function(e){
     e.preventDefault();
     var nombre = document.getElementById('nombre');
@@ -1237,11 +1264,36 @@ main{padding-top:86px}
       return;
     }
 
-    document.getElementById('nombreExito').textContent = nombre.value.trim().split(' ')[0];
-    var aviso = document.getElementById('avisoExito');
-    aviso.classList.add('visible');
-    aviso.scrollIntoView({ behavior:'smooth', block:'center' });
-    form.reset();
+    /* Envío real a Web3Forms */
+    avisoExito.classList.remove('visible');
+    avisoError.classList.remove('visible');
+    btnEnviar.classList.add('enviando');
+    textoBtn.textContent = 'Enviando…';
+
+    var datos = Object.fromEntries(new FormData(form).entries());
+    datos.privacidad = priv.checked ? 'Aceptada' : 'No aceptada';
+
+    fetch('https://api.web3forms.com/submit', {
+      method:'POST',
+      headers:{ 'Content-Type':'application/json', 'Accept':'application/json' },
+      body: JSON.stringify(datos)
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(res){
+      if(!res.success){ throw new Error(res.message || 'Error de envío'); }
+      document.getElementById('nombreExito').textContent = nombre.value.trim().split(' ')[0];
+      avisoExito.classList.add('visible');
+      avisoExito.scrollIntoView({ behavior:'smooth', block:'center' });
+      form.reset();
+    })
+    .catch(function(){
+      avisoError.classList.add('visible');
+      avisoError.scrollIntoView({ behavior:'smooth', block:'center' });
+    })
+    .finally(function(){
+      btnEnviar.classList.remove('enviando');
+      textoBtn.textContent = 'Enviar solicitud';
+    });
   });
 
   form.querySelectorAll('input,select,textarea').forEach(function(el){
